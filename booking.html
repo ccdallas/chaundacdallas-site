@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Session — Chaunda C. Dallas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C8102E;
+    --crimson-dim: rgba(200,16,46,0.12);
+    --crimson-glow: rgba(200,16,46,0.06);
+    --black: #0a0a0a;
+    --deep: #111318;
+    --surface: #181b22;
+    --surface-raised: #1e2128;
+    --white: #f5f3ef;
+    --white-dim: rgba(245,243,239,0.6);
+    --white-faint: rgba(245,243,239,0.15);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.15);
+    --border: rgba(245,243,239,0.08);
+    --border-accent: rgba(200,16,46,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(200,16,46,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 70% at 85% 85%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px 100px;
+  }
+
+  /* ── ECG LINE HEADER DECORATION ── */
+  .ecg-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--crimson), transparent 60%);
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 60px 0 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--crimson);
+    opacity: 0.4;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .header h1 .accent {
+    color: var(--crimson);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--white-dim);
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    margin-top: 14px;
+    max-width: 480px;
+  }
+
+  /* ── STATUS BANNER ── */
+  .status-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid rgba(200,16,46,0.2);
+    border-left: 2px solid var(--crimson);
+    padding: 14px 20px;
+    margin-bottom: 52px;
+    background: var(--crimson-glow);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--crimson);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--crimson);
+    letter-spacing: 0.06em;
+  }
+
+  .status-text span {
+    color: var(--white-dim);
+  }
+
+  /* ── BIO ── */
+  .bio {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 0;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.45s forwards;
+  }
+
+  .bio p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 20px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--white-dim);
+    max-width: 640px;
+  }
+
+  .bio p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .bio-signature {
+    margin-top: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gold);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 24px;
+    opacity: 0.5;
+  }
+
+  /* ── SESSION CARDS ── */
+  .sessions { margin-bottom: 56px; }
+
+  .session-card {
+    border: 1px solid var(--border);
+    padding: 32px 36px;
+    margin-bottom: 2px;
+    background: var(--deep);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease;
+    opacity: 0;
+  }
+
+  .session-card:first-child { border-radius: 2px 2px 0 0; }
+  .session-card:last-child  { border-radius: 0 0 2px 2px; margin-bottom: 0; }
+
+  .session-card:nth-child(1) { animation: fadeUp 0.8s ease 0.5s forwards; }
+  .session-card:nth-child(2) { animation: fadeUp 0.8s ease 0.62s forwards; }
+  .session-card:nth-child(3) { animation: fadeUp 0.8s ease 0.74s forwards; }
+  .session-card:nth-child(4) { animation: fadeUp 0.8s ease 0.86s forwards; }
+
+  .session-card:hover { border-color: var(--border-accent); }
+
+  .session-card.featured {
+    border-color: rgba(200,16,46,0.25);
+    background: linear-gradient(135deg, rgba(200,16,46,0.04) 0%, var(--deep) 60%);
+  }
+
+  .session-card.featured::before {
+    content: 'WEEKLY OPEN';
+    position: absolute;
+    top: 20px; right: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--crimson);
+    opacity: 0.5;
+  }
+
+  .session-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .session-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .badge-duration {
+    background: var(--crimson-dim);
+    color: #e85070;
+    border: 1px solid var(--border-accent);
+  }
+
+  .badge-day {
+    background: var(--white-faint);
+    color: var(--white-dim);
+    border: 1px solid var(--border);
+  }
+
+  .badge-open {
+    background: var(--gold-dim);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .session-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 18px;
+    max-width: 560px;
+  }
+
+  .session-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .option-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    color: var(--white-dim);
+    letter-spacing: 0.05em;
+    border-radius: 1px;
+    background: rgba(245,243,239,0.03);
+  }
+
+  .option-pill.highlight {
+    border-color: rgba(200,16,46,0.3);
+    color: #e85070;
+    background: var(--crimson-glow);
+  }
+
+  .session-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 22px;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--white-dim);
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 1px;
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--crimson);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: background 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: #a50d26; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    text-decoration: none;
+    border-radius: 1px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(245,243,239,0.3);
+    color: var(--white);
+  }
+
+  /* ── SATURDAY MEET LINK BLOCK ── */
+  .meet-block {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 20px 24px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .meet-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .meet-info { flex: 1; min-width: 180px; }
+
+  .meet-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .meet-link-display {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--white-dim);
+  }
+
+  /* ── PREP NOTE ── */
+  .prep {
+    border: 1px solid var(--border);
+    padding: 30px 32px;
+    margin-bottom: 56px;
+    background: var(--deep);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.95s forwards;
+  }
+
+  .prep-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    opacity: 0.5;
+    margin-bottom: 18px;
+  }
+
+  .prep ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .prep li {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--white-dim);
+    line-height: 1.7;
+    display: flex;
+    gap: 14px;
+  }
+
+  .prep li::before {
+    content: '—';
+    color: var(--crimson);
+    font-family: 'DM Mono', monospace;
+    flex-shrink: 0;
+  }
+
+  .prep li strong { color: var(--white); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.05s forwards;
+  }
+
+  .footer-left {}
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .footer-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--white-dim);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+    opacity: 0.6;
+  }
+
+  .footer-links a:hover { color: var(--crimson); opacity: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .container { padding: 0 18px 70px; }
+    .header { padding: 44px 0 40px; }
+    .session-card { padding: 24px 20px; }
+    .prep { padding: 22px 20px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-links { align-items: flex-start; }
+    .session-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ecg-bar"></div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Chaunda C. Dallas LLC · connect@chaundacdallas.com</div>
+    <h1>Book a <em>Session</em><br>with <span class="accent">Chaunda.</span></h1>
+    <p class="header-sub">Healthcare Cybersecurity Strategist · Digital First Responder<br>WiCyS Technical Mentor, Cohort 3 · Chaunda C. Dallas LLC</p>
+  </div>
+
+  <!-- STATUS BANNER -->
+  <div class="status-banner">
+    <div class="pulse-dot"></div>
+    <div class="status-text">
+      WiCyS Cohort 3 Active &nbsp;·&nbsp; <span>Booking open — Tuesday, Thursday &amp; Saturday sessions available</span>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="bio">
+    <p>I spent <strong>28 years in clinical emergency medicine</strong> before pivoting into cybersecurity. My mentoring approach mirrors how I worked in the ER — <strong>assess, stabilize, treat, recover.</strong> We figure out where you are, address what's urgent, and build a plan that fits your real life.</p>
+    <div class="bio-signature">"I didn't leave healthcare. I learned to defend it."</div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="section-label">Available Sessions</div>
+
+  <div class="sessions">
+
+    <!-- TUESDAY / THURSDAY BLOCK -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">Weekday Mentor Sessions</div>
+        <div class="session-badges">
+          <span class="badge badge-day">Tue &amp; Thu</span>
+          <span class="badge badge-day">1-Hour Window</span>
+        </div>
+      </div>
+      <p class="session-desc">One dedicated hour, two days a week — structured so you can book what you actually need. Pick a 15-minute check-in for a quick touchpoint, or a 30-minute session when you need to go deeper. Up to four 15-minute slots or a mix per window.</p>
+
+      <div class="section-label" style="margin-bottom:12px; margin-top:4px;">Pick your session length</div>
+      <div class="session-options">
+        <div class="option-pill highlight">15 min — Quick Check-In</div>
+        <div class="option-pill">30 min — Career Triage / Deep Dive</div>
+      </div>
+
+      <div class="session-tags">
+        <span class="tag">One win · one blocker · one question</span>
+        <span class="tag">Resume &amp; positioning</span>
+        <span class="tag">Cert roadmap</span>
+        <span class="tag">Job search strategy</span>
+        <span class="tag">Healthcare cyber path</span>
+        <span class="tag">Technical questions</span>
+      </div>
+      <div class="cta-row">
+        <a href="PASTE_GOOGLE_BOOKING_LINK_HERE" class="btn-primary" target="_blank">Book a Session ↗</a>
+        <a href="PASTE_GOOGLE_BOOKING_LINK_HERE_30MIN" class="btn-secondary" target="_blank">Book 30-Min ↗</a>
+      </div>
+    </div>
+
+    <!-- SATURDAY STUDY HALL -->
+    <div class="session-card featured">
+      <div class="session-top">
+        <div class="session-title">Saturday Study Hall + Ask Me Anything</div>
+        <div class="session-badges">
+          <span class="badge badge-duration">60 min</span>
+          <span class="badge badge-day">Saturdays · 1–2 PM</span>
+          <span class="badge badge-open">No Booking Needed</span>
+        </div>
+      </div>
+      <p class="session-desc">An open hour every Saturday — drop in, no booking required. Bring your TryHackMe questions, cert prep blockers, resume stress, or just show up and work alongside someone who's in it with you. Multiple mentees welcome. No agenda — just come ready to grow.</p>
+
+      <div class="session-tags">
+        <span class="tag">TryHackMe / HackTheBox</span>
+        <span class="tag">Cert prep</span>
+        <span class="tag">Resume review</span>
+        <span class="tag">Ask anything</span>
+        <span class="tag">Accountability</span>
+        <span class="tag">Study together</span>
+      </div>
+
+      <div class="meet-block">
+        <div class="meet-icon">🟢</div>
+        <div class="meet-info">
+          <div class="meet-label">Standing Google Meet Link — Every Saturday 1–2 PM</div>
+          <div class="meet-link-display">PASTE_YOUR_GOOGLE_MEET_LINK_HERE</div>
+        </div>
+        <a href="PASTE_YOUR_GOOGLE_MEET_LINK_HERE" class="btn-primary" target="_blank">Join the Room ↗</a>
+      </div>
+    </div>
+
+    <!-- PROFESSIONAL CONSULT -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">Professional Consultation</div>
+        <div class="session-badges">
+          <span class="badge badge-duration">30–60 min</span>
+          <span class="badge badge-day">By Request</span>
+        </div>
+      </div>
+      <p class="session-desc">For organizations, teams, or professionals navigating healthcare cybersecurity risk. IoMT security, clinical AI governance, HIPAA compliance posture, or strategic advisory — let's talk about what your team is actually up against.</p>
+      <div class="session-tags">
+        <span class="tag">IoMT / Medical Devices</span>
+        <span class="tag">Healthcare GRC</span>
+        <span class="tag">Clinical AI Risk</span>
+        <span class="tag">HIPAA posture</span>
+        <span class="tag">Security strategy</span>
+      </div>
+      <div class="cta-row">
+        <a href="mailto:connect@chaundacdallas.com" class="btn-primary">Reach Out to Schedule ↗</a>
+      </div>
+    </div>
+
+    <!-- WICYS MENTEE ONLY NOTE -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">WiCyS Mentee? Start Here.</div>
+        <div class="session-badges">
+          <span class="badge badge-open">Cohort 3</span>
+        </div>
+      </div>
+      <p class="session-desc">If you're my assigned WiCyS mentee, book your first weekday session above to get us on the calendar. After that, Saturday Study Hall is your standing open door — no booking ever needed, just show up. Come with one win, one blocker, and one question for every check-in.</p>
+      <div class="session-tags">
+        <span class="tag">TryHackMe recommended starting point</span>
+        <span class="tag">HackTheBox Academy — next level</span>
+        <span class="tag">eJPT · CompTIA PenTest+</span>
+        <span class="tag">Security+ path</span>
+      </div>
+      <div class="cta-row">
+        <a href="PASTE_GOOGLE_BOOKING_LINK_HERE" class="btn-primary" target="_blank">Book First Session ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PREP NOTE -->
+  <div class="prep">
+    <div class="prep-label">How to make the most of our time</div>
+    <ul>
+      <li>For check-ins: one win, one blocker, one question — we move fast and make it count.</li>
+      <li>For 30-min sessions: bring your current resume or LinkedIn if you have one. We work from what's real.</li>
+      <li>For Saturday Study Hall: <strong>no prep, no booking</strong> — just click the standing link and join. Multiple mentees welcome.</li>
+      <li>All sessions via Google Meet. Link sent automatically in your booking confirmation.</li>
+      <li>Can't find a time? Email <strong>connect@chaundacdallas.com</strong> and we'll sort it out.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <div class="footer-name">Chaunda C. Dallas, MSIT</div>
+      <div class="footer-title">Healthcare Cybersecurity Strategist · Digital First Responder · WiCyS Technical Mentor</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://chaundacdallas.com" target="_blank">chaundacdallas.com</a>
+      <a href="https://ccdallas.github.io/digital-first-responder-lab" target="_blank">DFR Lab</a>
+      <a href="mailto:connect@chaundacdallas.com">connect@chaundacdallas.com</a>
+      <a href="https://linkedin.com/in/chaundacdallas" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
