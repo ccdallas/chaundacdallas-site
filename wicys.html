@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiCyS Mentoring — Chaunda C. Dallas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C8102E;
+    --crimson-dim: rgba(200,16,46,0.10);
+    --crimson-glow: rgba(200,16,46,0.05);
+    --black: #0a0a0a;
+    --deep: #111318;
+    --surface: #181b22;
+    --white: #f5f3ef;
+    --white-dim: rgba(245,243,239,0.6);
+    --white-faint: rgba(245,243,239,0.12);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.14);
+    --border: rgba(245,243,239,0.08);
+    --border-accent: rgba(200,16,46,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 20% 10%, rgba(200,16,46,0.06) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ecg-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--crimson), transparent 50%);
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 28px 100px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 56px 0 44px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--crimson);
+    opacity: 0.4;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--white);
+  }
+
+  .header h1 .accent {
+    color: var(--crimson);
+    font-style: italic;
+  }
+
+  .header-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    margin-top: 14px;
+    opacity: 0.55;
+  }
+
+  /* ── WELCOME ── */
+  .welcome {
+    border-left: 2px solid var(--crimson);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    background: var(--crimson-glow);
+    border-top: 1px solid var(--border-accent);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .welcome-greeting {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 18px;
+    line-height: 1.3;
+  }
+
+  .welcome-greeting strong { font-style: normal; font-weight: 600; }
+
+  .welcome p {
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--white-dim);
+    margin-bottom: 14px;
+  }
+
+  .welcome p:last-of-type { margin-bottom: 0; }
+  .welcome p strong { color: var(--white); font-weight: 500; }
+
+  .welcome-sig {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold);
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    opacity: 0.45;
+    margin-bottom: 20px;
+  }
+
+  /* ── SESSION CARDS ── */
+  .sessions { margin-bottom: 48px; }
+
+  .session-card {
+    border: 1px solid var(--border);
+    padding: 32px 36px;
+    margin-bottom: 2px;
+    background: var(--deep);
+    position: relative;
+    transition: border-color 0.25s ease;
+    opacity: 0;
+  }
+
+  .session-card:first-child { border-radius: 2px 2px 0 0; }
+  .session-card:last-child  { border-radius: 0 0 2px 2px; margin-bottom: 0; }
+  .session-card:nth-child(1) { animation: fadeUp 0.8s ease 0.5s forwards; }
+  .session-card:nth-child(2) { animation: fadeUp 0.8s ease 0.62s forwards; }
+  .session-card:nth-child(3) { animation: fadeUp 0.8s ease 0.74s forwards; }
+  .session-card:hover { border-color: var(--border-accent); }
+
+  .session-card.saturday {
+    border-color: rgba(201,168,76,0.2);
+    background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, var(--deep) 70%);
+  }
+
+  .session-card.saturday::after {
+    content: 'NO BOOKING NEEDED';
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── CARD HEADER ── */
+  .session-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .session-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  .badge-red     { background: var(--crimson-dim); color: #e85070; border: 1px solid var(--border-accent); }
+  .badge-neutral { background: var(--white-faint); color: var(--white-dim); border: 1px solid var(--border); }
+  .badge-gold    { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
+
+  /* ── AVAILABILITY PILLS ── */
+  .availability {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 14px 0 18px;
+  }
+
+  .avail-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 1px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--white-dim);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .avail-pill .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--crimson);
+    flex-shrink: 0;
+  }
+
+  .avail-pill.saturday-pill .dot { background: #4caf6e; }
+
+  /* ── DESC + TAGS ── */
+  .session-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.82;
+    color: var(--white-dim);
+    margin-bottom: 18px;
+    max-width: 520px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--white-dim);
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 1px;
+  }
+
+  /* ── MEET BLOCK ── */
+  .meet-block {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.18);
+    padding: 18px 22px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .meet-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4caf6e;
+    flex-shrink: 0;
+    box-shadow: 0 0 7px rgba(76,175,110,0.5);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .meet-info { flex: 1; min-width: 160px; }
+
+  .meet-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .meet-url {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--white-dim);
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary { background: var(--crimson); color: var(--white); }
+  .btn-primary:hover { background: #a50d26; }
+
+  .btn-gold {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.35);
+  }
+  .btn-gold:hover { background: var(--gold-dim); border-color: var(--gold); }
+
+  /* ── RESOURCES ── */
+  .resources {
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    background: var(--deep);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.85s forwards;
+  }
+
+  .resources-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    opacity: 0.45;
+    margin-bottom: 20px;
+  }
+
+  .resource-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .resource-item { display: flex; gap: 16px; align-items: flex-start; }
+
+  .resource-item::before {
+    content: '→';
+    color: var(--crimson);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .resource-name { font-size: 13.5px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+  .resource-desc { font-size: 12.5px; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.95s forwards;
+  }
+
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+  .footer-role { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--white-dim); text-transform: uppercase; opacity: 0.45; }
+  .footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; }
+  .footer-links a { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--white-dim); text-decoration: none; opacity: 0.55; transition: all 0.2s ease; }
+  .footer-links a:hover { color: var(--crimson); opacity: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  @media (max-width: 580px) {
+    .container { padding: 0 18px 70px; }
+    .header { padding: 40px 0 34px; }
+    .welcome { padding: 22px 20px; }
+    .session-card { padding: 24px 20px; }
+    .resources { padding: 22px 18px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .footer-links { align-items: flex-start; }
+    .session-card.saturday::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ecg-bar"></div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">WiCyS Technical Mentoring · Cohort 3</div>
+    <h1>I'm so glad<br>you're <span class="accent">here.</span></h1>
+    <p class="header-sub">Chaunda C. Dallas, MSIT · Healthcare Cybersecurity Strategist · Digital First Responder</p>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="welcome">
+    <div class="welcome-greeting">Welcome to Cohort 3 — <strong>let's get to work.</strong></div>
+    <p>I'm Chaunda, your WiCyS Technical Mentor. I spent <strong>28 years in clinical emergency medicine</strong> before pivoting into cybersecurity — so I know what it feels like to walk into a field where you don't see yourself reflected yet. That's exactly why I'm here.</p>
+    <p>Whether you have questions about the coursework, want help mapping your cert path, need someone to talk through your goals, or just want to show up on a Saturday and study alongside someone who's still in it with you — <strong>you're in the right place.</strong></p>
+    <p>My approach is simple: I meet you where you are. We assess, stabilize, and build a plan that fits your real life — not a template.</p>
+    <div class="welcome-sig">"I didn't leave healthcare. I learned to defend it." — Chaunda</div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="section-label">Schedule a Session</div>
+
+  <div class="sessions">
+
+    <!-- WICYS OFFICE HOURS -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">WiCyS Office Hours</div>
+        <div class="badges">
+          <span class="badge badge-red">30 Min</span>
+        </div>
+      </div>
+
+      <div class="availability">
+        <div class="avail-pill"><span class="dot"></span>Tuesdays</div>
+        <div class="avail-pill"><span class="dot"></span>Thursdays</div>
+      </div>
+
+      <p class="session-desc">Reserved time for WiCyS mentees. Select a day, pick an open slot, fill in your info — and you're on the calendar. Bring your coursework questions, cert path questions, or anything on your mind.</p>
+
+      <div class="tags">
+        <span class="tag">Coursework questions</span>
+        <span class="tag">Cert roadmap</span>
+        <span class="tag">Career direction</span>
+        <span class="tag">Blockers &amp; wins</span>
+      </div>
+
+      <a href="https://calendar.app.google/rLkybr44KZTK1faYA" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+    </div>
+
+    <!-- 1:1 MENTOR SESSION -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">1:1 Mentor Session</div>
+        <div class="badges">
+          <span class="badge badge-red">30 Min</span>
+        </div>
+      </div>
+
+      <div class="availability">
+        <div class="avail-pill"><span class="dot"></span>Mondays</div>
+        <div class="avail-pill"><span class="dot"></span>Tuesdays</div>
+        <div class="avail-pill"><span class="dot"></span>Wednesdays</div>
+        <div class="avail-pill"><span class="dot"></span>Thursdays</div>
+      </div>
+
+      <p class="session-desc">A focused 30 minutes built around you. Select any available day, choose a time that works, and come ready to work. Bring your resume, job search blockers, cert questions, or your goals — we'll leave with a clear next step.</p>
+
+      <div class="tags">
+        <span class="tag">Resume &amp; positioning</span>
+        <span class="tag">Job search strategy</span>
+        <span class="tag">Healthcare cyber path</span>
+        <span class="tag">Technical deep dive</span>
+        <span class="tag">Cert strategy</span>
+      </div>
+
+      <a href="https://calendar.app.google/eNZSUVRUBTXZms1H6" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+    </div>
+
+    <!-- SATURDAY STUDY HALL -->
+    <div class="session-card saturday">
+      <div class="session-top">
+        <div class="session-title">Saturday Study Hall</div>
+        <div class="badges">
+          <span class="badge badge-neutral">Every Saturday</span>
+          <span class="badge badge-gold">1:00 – 2:00 PM EST</span>
+        </div>
+      </div>
+
+      <div class="availability">
+        <div class="avail-pill saturday-pill"><span class="dot"></span>No booking needed — just show up</div>
+      </div>
+
+      <p class="session-desc">Drop in every Saturday using the standing link below. Bring your TryHackMe questions, cert prep, resume, or just come to study alongside others. This is your open accountability hour. Multiple mentees welcome every week.</p>
+
+      <div class="tags">
+        <span class="tag">TryHackMe / HackTheBox</span>
+        <span class="tag">Cert prep</span>
+        <span class="tag">Ask me anything</span>
+        <span class="tag">Accountability</span>
+        <span class="tag">Study together</span>
+      </div>
+
+      <div class="meet-block">
+        <div class="meet-dot"></div>
+        <div class="meet-info">
+          <div class="meet-label">Standing Link · Every Saturday 1:00 – 2:00 PM EST</div>
+          <div class="meet-url">https://meet.google.com/jey-dwbf-hvr</div>
+        </div>
+        <a href="https://meet.google.com/jey-dwbf-hvr" class="btn btn-gold" target="_blank">Join the Room ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="resources">
+    <div class="resources-label">Recommended Starting Points</div>
+    <ul class="resource-list">
+      <li class="resource-item">
+        <div>
+          <div class="resource-name">TryHackMe</div>
+          <div class="resource-desc">Best starting point — guided, beginner-friendly, structured learning paths. Start here before HackTheBox.</div>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div>
+          <div class="resource-name">HackTheBox Academy</div>
+          <div class="resource-desc">Next level after TryHackMe. More challenging, closer to real-world scenarios.</div>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div>
+          <div class="resource-name">eJPT — eLearnSecurity Junior Penetration Tester</div>
+          <div class="resource-desc">Entry-level cert with real weight. Great first offensive security credential without years of experience required.</div>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div>
+          <div class="resource-name">CompTIA Security+ / PenTest+</div>
+          <div class="resource-desc">Industry-standard baseline (Security+) and a strong next step toward penetration testing (PenTest+).</div>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div>
+          <div class="resource-name">Digital First Responder Lab</div>
+          <div class="resource-desc">My IoMT threat intelligence lab — real healthcare cybersecurity scenarios showing what defending clinical environments actually looks like.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-name">Chaunda C. Dallas, MSIT</div>
+      <div class="footer-role">Healthcare Cybersecurity Strategist · WiCyS Technical Mentor · Digital First Responder</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://chaundacdallas.com" target="_blank">chaundacdallas.com</a>
+      <a href="https://lab.chaundacdallas.com" target="_blank">lab.chaundacdallas.com</a>
+      <a href="mailto:connect@chaundacdallas.com">connect@chaundacdallas.com</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
