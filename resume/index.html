@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chaunda C. Dallas, MSIT — Résumé</title>
+<meta name="description" content="Chaunda C. Dallas, MSIT — Healthcare Cybersecurity Strategist & Digital First Responder. Featured Defender in Semperis' Midnight in the War Room, Black Hat USA 2026.">
+<meta property="og:title" content="Chaunda C. Dallas, MSIT — Résumé">
+<meta property="og:description" content="Healthcare Cybersecurity Strategist & Digital First Responder. Featured Defender — Black Hat USA 2026.">
+<meta property="og:image" content="/chaunda-headshot.jpeg">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz@1,18..72&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0d; --panel:#141417; --ink:#f4f4f5; --muted:#9a9aa3;
+    --red:#b11226; --red-bright:#e23a4e; --line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Archivo",system-ui,Arial,sans-serif;
+    line-height:1.5; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center;
+    padding:56px 22px 40px; position:relative; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; left:0; top:0; bottom:0; width:6px;
+    background:var(--red); z-index:2;
+  }
+  .wrap{width:100%; max-width:640px; text-align:center; position:relative; z-index:1}
+  .avatar{
+    width:128px; height:128px; border-radius:50%; object-fit:cover;
+    border:2px solid var(--red); padding:4px; background:var(--panel);
+    margin:0 auto 22px; display:block;
+    box-shadow:0 0 0 1px rgba(255,255,255,.06), 0 18px 40px rgba(0,0,0,.5);
+  }
+  .eyebrow{
+    font-size:12px; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--red-bright); font-weight:700; margin-bottom:14px;
+  }
+  h1{
+    font-weight:800; font-size:clamp(34px,8vw,52px); line-height:1.02;
+    letter-spacing:-.01em; text-transform:uppercase;
+  }
+  .role{
+    color:var(--muted); font-size:clamp(14px,3.6vw,17px); font-weight:500;
+    margin-top:10px; letter-spacing:.01em;
+  }
+  .ecg{width:100%; max-width:420px; height:54px; margin:22px auto 6px; display:block}
+  .ecg path{
+    fill:none; stroke:var(--red-bright); stroke-width:2.4;
+    stroke-linecap:round; stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px rgba(226,58,78,.55));
+    stroke-dasharray:1400; stroke-dashoffset:1400;
+    animation:trace 2s ease-out .25s forwards;
+  }
+  @keyframes trace{to{stroke-dashoffset:0}}
+  .quote{
+    font-family:"Newsreader",Georgia,serif; font-style:italic;
+    font-size:clamp(20px,5.2vw,28px); line-height:1.3; color:#fff;
+    margin:6px auto 26px; max-width:30ch;
+  }
+  .badge{
+    display:flex; gap:12px; align-items:flex-start; text-align:left;
+    background:var(--panel); border:1px solid var(--line);
+    border-left:3px solid var(--red);
+    border-radius:10px; padding:14px 16px; margin:0 auto 28px; max-width:520px;
+  }
+  .badge .star{color:var(--red-bright); font-size:18px; line-height:1.4}
+  .badge b{font-weight:700}
+  .badge span{font-size:13.5px; color:var(--muted)}
+  .badge .lead{color:var(--ink); display:block; margin-bottom:2px; font-size:14px}
+  .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:22px}
+  .btn{
+    appearance:none; cursor:pointer; text-decoration:none;
+    font-family:inherit; font-weight:700; font-size:15px;
+    padding:13px 22px; border-radius:8px; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .12s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary{background:var(--red); color:#fff; border:1px solid var(--red)}
+  .btn-primary:hover{background:var(--red-bright); border-color:var(--red-bright); transform:translateY(-2px)}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--red-bright); color:#fff; transform:translateY(-2px)}
+  .links{display:flex; gap:6px 14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-bottom:34px}
+  .links a{
+    color:var(--muted); text-decoration:none; font-size:14px; font-weight:500;
+    border-bottom:1px solid transparent; padding-bottom:1px; transition:color .15s, border-color .15s;
+  }
+  .links a:hover{color:#fff; border-color:var(--red-bright)}
+  .sep{color:var(--red); opacity:.7}
+  footer{border-top:1px solid var(--line); padding-top:18px; width:100%; max-width:640px}
+  .creds{font-size:12px; color:var(--muted); letter-spacing:.02em; line-height:1.8}
+  .creds .dot{color:var(--red)}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--red-bright); outline-offset:3px; border-radius:6px}
+  @media (max-width:480px){
+    body{padding:40px 18px 32px}
+    body::before{left:0; right:0; bottom:auto; width:auto; height:5px}
+    .badge{flex-direction:column; gap:6px}
+    .btn{flex:1 1 100%; justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ecg path{animation:none; stroke-dashoffset:0}
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="avatar" src="/chaunda-headshot.jpeg" alt="Chaunda C. Dallas">
+    <p class="eyebrow">Healthcare Cybersecurity</p>
+    <h1>Chaunda C. Dallas<span style="color:var(--muted);font-weight:600">, MSIT</span></h1>
+    <p class="role">Healthcare Cybersecurity Strategist &nbsp;·&nbsp; Digital First Responder</p>
+    <svg class="ecg" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,40 H252 L260,34 L268,40 L274,46 L282,10 L290,70 L298,40 L322,33 L346,40 H600"/>
+    </svg>
+    <p class="quote">&ldquo;I didn&rsquo;t leave healthcare. I learned to defend it.&rdquo;</p>
+    <div class="badge">
+      <span class="star" aria-hidden="true">★</span>
+      <span>
+        <b class="lead">Featured Defender — <i>Midnight in the War Room</i></b>
+        Semperis documentary premiering at Black Hat USA · August 5, 2026
+      </span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">View résumé</a>
+      <a class="btn btn-ghost" href="/resume.pdf" download="Chaunda-Dallas-Resume.pdf">Download PDF</a>
+    </div>
+    <nav class="links" aria-label="More about Chaunda">
+      <a href="https://lab.chaundacdallas.com" target="_blank" rel="noopener">DFR Lab</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/chaundacdallas" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="mailto:connect@chaundacdallas.com">Email</a>
+    </nav>
+  </main>
+  <footer>
+    <p class="creds">
+      SAM.gov Active <span class="dot">·</span> CAGE 18D81 <span class="dot">·</span> UEI KV2BR8QU36J7
+      <span class="dot">·</span> WOSB in progress <span class="dot">·</span> Remote-only
+    </p>
+  </footer>
+</body>
+</html>
