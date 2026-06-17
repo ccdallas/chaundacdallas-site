@@ -40,6 +40,17 @@
     z-index: 0;
   }
 
+  /* ── UNIVERSAL NAV ── */
+  .ccd-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:14px 28px;background:rgba(10,10,10,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,16,46,0.25);font-family:'DM Mono',ui-monospace,monospace;}
+  .ccd-nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.01em;color:#f5f3ef;text-decoration:none;white-space:nowrap;}
+  .ccd-nav-dot{color:#C8102E;}
+  .ccd-nav-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .ccd-nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,243,239,0.6);text-decoration:none;padding:4px 0;position:relative;transition:color .2s ease;}
+  .ccd-nav-links a:hover{color:#f5f3ef;}
+  .ccd-nav-links a.active{color:#C8102E;}
+  .ccd-nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#C8102E;}
+  @media (max-width:600px){.ccd-nav{padding:12px 18px;gap:10px;}.ccd-nav-brand{font-size:16px;}.ccd-nav-links{gap:16px;width:100%;}.ccd-nav-links a{font-size:10px;letter-spacing:0.12em;}}
+
   .ecg-bar {
     width: 100%;
     height: 2px;
@@ -436,6 +447,18 @@
 </head>
 <body>
 
+<!-- ===== CCD UNIVERSAL NAV BAR ===== -->
+<nav class="ccd-nav">
+  <a class="ccd-nav-brand" href="https://chaundacdallas.com">Chaunda C. Dallas<span class="ccd-nav-dot">.</span></a>
+  <div class="ccd-nav-links">
+    <a href="https://chaundacdallas.com">Home</a>
+    <a href="https://chaundacdallas.com/book">Book</a>
+    <a class="active" href="https://chaundacdallas.com/wicys">WiCyS</a>
+    <a href="https://lab.chaundacdallas.com/">Lab</a>
+  </div>
+</nav>
+<!-- ===== END CCD NAV BAR ===== -->
+
 <div class="ecg-bar"></div>
 
 <div class="container">
@@ -484,7 +507,7 @@
         <span class="tag">Blockers &amp; wins</span>
       </div>
 
-      <a href="https://calendar.app.google/rLkybr44KZTK1faYA" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+      <a href="https://calendar.app.google/BtyC22XyDDh4zWdB9" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
     </div>
 
     <!-- 1:1 MENTOR SESSION -->
@@ -497,9 +520,7 @@
       </div>
 
       <div class="availability">
-        <div class="avail-pill"><span class="dot"></span>Mondays</div>
         <div class="avail-pill"><span class="dot"></span>Tuesdays</div>
-        <div class="avail-pill"><span class="dot"></span>Wednesdays</div>
         <div class="avail-pill"><span class="dot"></span>Thursdays</div>
       </div>
 
@@ -513,7 +534,7 @@
         <span class="tag">Cert strategy</span>
       </div>
 
-      <a href="https://calendar.app.google/eNZSUVRUBTXZms1H6" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+      <a href="https://calendar.app.google/417BVNHA43JPBEA17" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
     </div>
 
     <!-- SATURDAY STUDY HALL -->
@@ -597,6 +618,7 @@
     </div>
     <div class="footer-links">
       <a href="https://chaundacdallas.com" target="_blank">chaundacdallas.com</a>
+      <a href="https://chaundacdallas.com/book" target="_blank">Book a Session</a>
       <a href="https://lab.chaundacdallas.com" target="_blank">lab.chaundacdallas.com</a>
       <a href="mailto:connect@chaundacdallas.com">connect@chaundacdallas.com</a>
     </div>
