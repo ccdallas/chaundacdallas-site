@@ -45,16 +45,57 @@
     z-index: 0;
   }
 
-  /* ===== CCD UNIVERSAL NAV BAR ===== */
-  .ccd-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:14px 28px;background:rgba(10,10,10,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,16,46,0.25);font-family:'DM Mono',ui-monospace,monospace;}
-  .ccd-nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.01em;color:#f5f3ef;text-decoration:none;white-space:nowrap;}
-  .ccd-nav-dot{color:#C8102E;}
-  .ccd-nav-links{display:flex;gap:24px;flex-wrap:wrap;}
-  .ccd-nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,243,239,0.6);text-decoration:none;padding:4px 0;position:relative;transition:color .2s ease;}
-  .ccd-nav-links a:hover{color:#f5f3ef;}
-  .ccd-nav-links a.active{color:#C8102E;}
-  .ccd-nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#C8102E;}
-  @media (max-width:600px){.ccd-nav{padding:12px 18px;gap:10px;}.ccd-nav-brand{font-size:16px;}.ccd-nav-links{gap:16px;width:100%;}.ccd-nav-links a{font-size:10px;letter-spacing:0.12em;}}
+  /* ===== UNIVERSAL NAV BAR ===== */
+  .ccd-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 32px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .ccd-nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .ccd-nav-dot { color: var(--crimson); }
+  .ccd-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .ccd-nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .ccd-nav-links a:hover { color: var(--white); }
+  .ccd-nav-links a.active { color: var(--crimson); font-weight: 500; }
+  .ccd-nav-links a.nav-book {
+    border: 1px solid var(--crimson);
+    padding: 6px 14px;
+    color: var(--white);
+    background: rgba(200, 16, 46, 0.1);
+    transition: all 0.2s ease;
+  }
+  .ccd-nav-links a.nav-book:hover {
+    background: var(--crimson);
+  }
 
   .ecg-bar {
     width: 100%;
@@ -67,7 +108,7 @@
   .container {
     position: relative;
     z-index: 1;
-    max-width: 880px;
+    max-width: 1100px; /* Expanded slightly to account for elegant spacing */
     margin: 0 auto;
     padding: 0 28px 100px;
   }
@@ -372,24 +413,67 @@
   .closing p { font-size: 14px; font-weight: 300; color: var(--white-dim); line-height: 1.8; max-width: 540px; margin-bottom: 28px; }
   .closing-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-top: 60px;
-    padding-top: 36px;
+  /* ===== NEW GRID COLUMN FOOTER STYLES ===== */
+  .ccd-footer {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 80px;
+    padding-top: 48px;
     border-top: 1px solid var(--border);
     opacity: 0;
     animation: fadeUp 0.8s ease 0.8s forwards;
   }
-  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-  .footer-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--white-dim); text-transform: uppercase; opacity: 0.5; }
-  .footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-  .footer-links a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--white-dim); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; opacity: 0.6; }
-  .footer-links a:hover { color: var(--crimson); opacity: 1; }
+  .ccd-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .ccd-footer-brand span { color: var(--crimson); }
+  .ccd-footer-meta {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--white-dim);
+    opacity: 0.7;
+  }
+  .ccd-footer-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+    opacity: 0.4;
+  }
+  .ccd-footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ccd-footer-col a {
+    font-size: 13px;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .ccd-footer-col a:hover {
+    color: var(--crimson);
+  }
+  .ccd-footer-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    margin-top: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--white-dim);
+    opacity: 0.5;
+  }
 
   /* ===== ANIMATIONS ===== */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -397,18 +481,24 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; } }
 
   /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .ccd-footer { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .ccd-footer-col:first-child { grid-column: 1 / -1; margin-bottom: 12px; }
+  }
   @media (max-width: 720px) {
     .featured-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
+    .ccd-nav { padding: 14px 20px; }
+    .ccd-nav-links { gap: 12px; }
     .container { padding: 0 18px 70px; }
     .header { padding: 44px 0 36px; }
     .profile { flex-direction: column; align-items: flex-start; }
     .closing { padding: 32px 24px; }
-    .footer { flex-direction: column; align-items: flex-start; }
-    .footer-links { align-items: flex-start; }
     .res-row { flex-direction: column; align-items: flex-start; gap: 14px; }
     .res-get { align-self: flex-end; }
+    .ccd-footer { grid-template-columns: 1fr; }
+    .ccd-footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
 </head>
@@ -693,7 +783,39 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="ccd-footer">  <div class="ccd-footer-col">    <div class="ccd-footer-brand">Chaunda C<span>.</span> Dallas LLC</div>    <div class="ccd-footer-meta">Healthcare Cybersecurity Strategist · Digital First Responder</div>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Work With Me</div>    <a href="https://chaundacdallas.com/book">Book a Session</a>    <a href="https://chaundacdallas.com/contact">Contact</a>    <a href="https://chaundacdallas.com/services">Services</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Learn More</div>    <a href="https://chaundacdallas.com/#about">About</a>    <a href="https://chaundacdallas.com/expertise">Expertise</a>    <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Resources</div>    <a href="https://chaundacdallas.com/resources">Resources</a>    <a href="https://chaundacdallas.com/playbook">Playbook</a>    <a href="https://chaundacdallas.com/documentary">Documentary</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Community & Tools</div>    <a href="https://chaundacdallas.com/wicys">WiCyS</a>    <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>  </div>  <div class="ccd-footer-bottom">    <span>© 2026 Chaunda C. Dallas LLC</span>    <span>Healthcare Cybersecurity Strategist · Digital First Responder</span>  </div></footer>
+  <footer class="ccd-footer">
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-brand">Chaunda C<span>.</span> Dallas LLC</div>
+      <div class="ccd-footer-meta">Healthcare Cybersecurity Strategist · Digital First Responder</div>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Work With Me</div>
+      <a href="https://chaundacdallas.com/book">Book a Session</a>
+      <a href="https://chaundacdallas.com/contact">Contact</a>
+      <a href="https://chaundacdallas.com/services">Services</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Learn More</div>
+      <a href="https://chaundacdallas.com/#about">About</a>
+      <a href="https://chaundacdallas.com/expertise">Expertise</a>
+      <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Resources</div>
+      <a href="https://chaundacdallas.com/resources">Resources</a>
+      <a href="https://chaundacdallas.com/playbook">Playbook</a>
+      <a href="https://chaundacdallas.com/documentary">Documentary</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Community & Tools</div>
+      <a href="https://chaundacdallas.com/wicys">WiCyS</a>
+      <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
+    </div>
+    <div class="ccd-footer-bottom">
+      <span>© 2026 Chaunda C. Dallas LLC</span>
+      <span>Healthcare Cybersecurity Strategist · Digital First Responder</span>
+    </div>
+  </footer>
 
 </div>
 </body>
