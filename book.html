@@ -7,20 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #C8102E;
-    --crimson-dim: rgba(200,16,46,0.12);
-    --crimson-glow: rgba(200,16,46,0.06);
-    --black: #0a0a0a;
-    --deep: #111318;
-    --surface: #181b22;
-    --surface-raised: #1e2128;
-    --white: #f5f3ef;
-    --white-dim: rgba(245,243,239,0.6);
-    --white-faint: rgba(245,243,239,0.15);
-    --gold: #c9a84c;
-    --gold-dim: rgba(201,168,76,0.15);
-    --border: rgba(245,243,239,0.08);
-    --border-accent: rgba(200,16,46,0.3);
+    --crimson: #1E5040;
+    --crimson-dim: rgba(30,80,64,0.12);
+    --crimson-glow: rgba(224,168,62,0.2);
+    --pulse: #8B1E24;
+    --black: #F3ECDD;
+    --deep: #EAE0C8;
+    --surface: #FFFFFF;
+    --surface-raised: #FFFFFF;
+    --white: #3D4142;
+    --white-dim: rgba(61,65,66,0.6);
+    --white-faint: rgba(61,65,66,0.15);
+    --gold: #E0A83E;
+    --gold-dim: rgba(224,168,62,0.15);
+    --border: rgba(61,65,66,0.14);
+    --border-accent: rgba(30,80,64,0.3);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,8 +39,8 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(200,16,46,0.07) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 70% at 85% 85%, rgba(201,168,76,0.04) 0%, transparent 50%);
+      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(30,80,64,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 70% at 85% 85%, rgba(224,168,62,0.04) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
@@ -56,7 +57,7 @@
   .ecg-bar {
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, var(--crimson), transparent 60%);
+    background: linear-gradient(to right, var(--pulse), transparent 60%);
     margin-bottom: 0;
     opacity: 0;
     animation: fadeIn 1s ease 0.1s forwards;
@@ -126,7 +127,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    border: 1px solid rgba(200,16,46,0.2);
+    border: 1px solid rgba(30,80,64,0.2);
     border-left: 2px solid var(--crimson);
     padding: 14px 20px;
     margin-bottom: 52px;
@@ -139,7 +140,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--crimson);
+    background: var(--pulse);
     flex-shrink: 0;
     animation: pulse 2s ease-in-out infinite;
   }
@@ -235,8 +236,8 @@
   .session-card:hover { border-color: var(--border-accent); }
 
   .session-card.featured {
-    border-color: rgba(200,16,46,0.25);
-    background: linear-gradient(135deg, rgba(200,16,46,0.04) 0%, var(--deep) 60%);
+    border-color: rgba(30,80,64,0.25);
+    background: linear-gradient(135deg, rgba(30,80,64,0.04) 0%, var(--deep) 60%);
   }
 
   .session-card.featured::before {
@@ -286,14 +287,14 @@
 
   .badge-duration {
     background: var(--crimson-dim);
-    color: #e85070;
+    color: #2C6B54;
     border: 1px solid var(--border-accent);
   }
 
   .badge-price {
-    background: var(--crimson);
+    background: var(--gold);
     color: var(--white);
-    border: 1px solid var(--crimson);
+    border: 1px solid var(--gold);
     font-weight: 500;
   }
 
@@ -306,7 +307,7 @@
   .badge-open {
     background: var(--gold-dim);
     color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.25);
+    border: 1px solid rgba(224,168,62,0.25);
   }
 
   .session-desc {
@@ -347,7 +348,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--crimson);
+    background: var(--gold);
     color: var(--white);
     font-family: 'DM Mono', monospace;
     font-size: 10.5px;
@@ -361,7 +362,7 @@
     cursor: pointer;
   }
 
-  .btn-primary:hover { background: #a50d26; }
+  .btn-primary:hover { background: #C48F2E; }
 
   .btn-secondary {
     display: inline-flex;
@@ -382,7 +383,7 @@
   }
 
   .btn-secondary:hover {
-    border-color: rgba(245,243,239,0.3);
+    border-color: rgba(61,65,66,0.3);
     color: var(--white);
   }
 
@@ -432,10 +433,10 @@
   .prep li strong { color: var(--white); font-weight: 500; }
 
   /* ── FOOTER ── */
-  .footer {
+  .ccd-footer {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 24px;
     padding-top: 36px;
@@ -444,41 +445,62 @@
     animation: fadeUp 0.8s ease 1.05s forwards;
   }
 
-  .footer-name {
+  .ccd-footer-col { display: flex; flex-direction: column; gap: 9px; min-width: 140px; }
+
+  .ccd-footer-brand {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--white);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
+  .ccd-footer-brand span { color: var(--crimson); }
 
-  .footer-title {
+  .ccd-footer-meta {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: var(--white-dim);
     text-transform: uppercase;
     opacity: 0.5;
   }
 
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
+  .ccd-footer-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
   }
 
-  .footer-links a {
+  .ccd-footer-col a {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     color: var(--white-dim);
     text-decoration: none;
     letter-spacing: 0.04em;
     transition: color 0.2s ease;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
-  .footer-links a:hover { color: var(--crimson); opacity: 1; }
+  .ccd-footer-col a:hover { color: var(--crimson); opacity: 1; }
+
+  .ccd-footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--white-dim);
+    opacity: 0.55;
+  }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -507,8 +529,7 @@
     .session-card { padding: 24px 20px; }
     .session-title { max-width: 100%; }
     .prep { padding: 22px 20px; }
-    .footer { flex-direction: column; align-items: flex-start; }
-    .footer-links { align-items: flex-start; }
+    .ccd-footer { flex-direction: column; align-items: flex-start; }
     .session-top { flex-direction: column; }
   }
 </style>
@@ -516,18 +537,46 @@
 <body>
 
 <!-- ===== CCD UNIVERSAL NAV BAR ===== -->
-<nav class="ccd-nav">  <a class="ccd-nav-brand" href="https://chaundacdallas.com">Chaunda C. Dallas<span class="ccd-nav-dot">.</span></a>  <div class="ccd-nav-links">    <a href="https://chaundacdallas.com">Home</a>    <a href="https://chaundacdallas.com/#about">About</a>    <a href="https://chaundacdallas.com/expertise">Expertise</a>    <a href="https://chaundacdallas.com/services">Services</a>    <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>    <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>    <a href="https://chaundacdallas.com/playbook">Playbook</a>    <a href="https://chaundacdallas.com/documentary">Documentary</a>    <a href="https://chaundacdallas.com/resources">Resources</a>    <a href="https://chaundacdallas.com/contact">Contact</a>    <a href="https://chaundacdallas.com/wicys">WiCyS</a>    <a href="https://chaundacdallas.com/book" class="nav-book">Book a Session</a>  </div></nav>
+<nav class="ccd-nav">
+  <a class="ccd-nav-brand" href="https://chaundacdallas.com">Chaunda C. Dallas<span class="ccd-nav-dot">.</span></a>
+  <div class="ccd-nav-links">
+    <a href="https://chaundacdallas.com">Home</a>
+    <a href="https://chaundacdallas.com/#about">About</a>
+    <a href="https://chaundacdallas.com/expertise">Expertise</a>
+    <a href="https://chaundacdallas.com/services">Services</a>
+    <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>
+    <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
+    <a href="https://chaundacdallas.com/playbook">Playbook</a>
+    <a href="https://chaundacdallas.com/documentary">Documentary</a>
+    <a href="https://chaundacdallas.com/resources">Resources</a>
+    <a href="https://chaundacdallas.com/contact">Contact</a>
+    <a href="https://chaundacdallas.com/book" class="nav-book">Book a Session</a>
+  </div>
+</nav>
+<style>
+  .ccd-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:14px 28px;background:rgba(243,236,221,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,80,64,0.18);font-family:'DM Mono',ui-monospace,monospace;}
+  .ccd-nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.01em;color:#3D4142;text-decoration:none;white-space:nowrap;}
+  .ccd-nav-dot{color:#1E5040;}
+  .ccd-nav-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .ccd-nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(61,65,66,0.6);text-decoration:none;padding:4px 0;position:relative;transition:color .2s ease;}
+  .ccd-nav-links a:hover{color:#3D4142;}
+  .ccd-nav-links a.active{color:#1E5040;}
+  .ccd-nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#1E5040;}
+  .nav-book{background:#E0A83E;color:#3D4142!important;padding:8px 14px;border-radius:2px;transition:background .2s ease;}
+  .nav-book:hover{background:#C48F2E;color:#3D4142!important;}
+  @media (max-width:600px){.ccd-nav{padding:12px 18px;gap:10px;}.ccd-nav-brand{font-size:16px;}.ccd-nav-links{gap:16px;width:100%;}.ccd-nav-links a{font-size:10px;letter-spacing:0.12em;}}
+</style>
 <!-- ===== END CCD NAV BAR ===== -->
 
 <div class="ecg-bar"></div>
 
 <div class="container">
 
- <!-- ===== BOOK HERO ===== -->
+  <!-- HEADER -->
   <div class="header">
-    <div class="header-eyebrow">Book a Session · Healthcare Cybersecurity Support</div>
+    <div class="header-eyebrow">connect@chaundacdallas.com</div>
     <h1>Book a <em>Session</em><br>with <span class="accent">Chaunda.</span></h1>
-    <p class="header-intro">1:1 strategy, advisory support, and healthcare cybersecurity engagements for clinicians, leaders, and organizations. Choose the path that matches your next step.</p>
+    <p class="header-sub">Healthcare Cybersecurity Strategist · Digital First Responder<br>Featured Defender — <em>Midnight in the War Room</em>, Black Hat USA 2026</p>
   </div>
 
   <!-- STATUS BANNER -->
@@ -617,12 +666,12 @@
     </div>
 
     <!-- HIPAA ASSESSMENT CARD -->
-    <div class="session-card" style="border-color: rgba(201,168,76,0.4);">
+    <div class="session-card" style="border-color: rgba(224,168,62,0.4);">
       <div class="session-top">
         <div class="session-title">Emergency HIPAA Security Risk Assessment</div>
         <div class="session-badges">
           <span class="badge badge-open">5-Day Delivery</span>
-          <span class="badge badge-price" style="background: var(--gold); border-color: var(--gold); color: var(--black);">$2,500</span>
+          <span class="badge badge-price" style="background: var(--crimson); border-color: var(--crimson); color: var(--black);">$2,500</span>
         </div>
       </div>
       <p class="session-desc">For small-to-mid-size healthcare practices, dental groups, and health-tech startups that need a HIPAA Security Risk Assessment — fast. I assess your gaps, deliver a report, and give you a remediation roadmap. No fluff. No jargon. Just what you need to fix.</p>
@@ -678,7 +727,39 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="ccd-footer">  <div class="ccd-footer-col">    <div class="ccd-footer-brand">Chaunda C<span>.</span> Dallas LLC</div>    <div class="ccd-footer-meta">Healthcare Cybersecurity Strategist · Digital First Responder</div>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Work With Me</div>    <a href="https://chaundacdallas.com/book">Book a Session</a>    <a href="https://chaundacdallas.com/contact">Contact</a>    <a href="https://chaundacdallas.com/services">Services</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Learn More</div>    <a href="https://chaundacdallas.com/#about">About</a>    <a href="https://chaundacdallas.com/expertise">Expertise</a>    <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Resources</div>    <a href="https://chaundacdallas.com/resources">Resources</a>    <a href="https://chaundacdallas.com/playbook">Playbook</a>    <a href="https://chaundacdallas.com/documentary">Documentary</a>  </div>  <div class="ccd-footer-col">    <div class="ccd-footer-heading">Community & Tools</div>    <a href="https://chaundacdallas.com/wicys">WiCyS</a>    <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>  </div>  <div class="ccd-footer-bottom">    <span>© 2026 Chaunda C. Dallas LLC</span>    <span>Healthcare Cybersecurity Strategist · Digital First Responder</span>  </div></footer>
+  <footer class="ccd-footer">
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-brand">Chaunda C<span>.</span> Dallas LLC</div>
+      <div class="ccd-footer-meta">Healthcare Cybersecurity Strategist · Digital First Responder</div>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Work With Me</div>
+      <a href="https://chaundacdallas.com/book">Book a Session</a>
+      <a href="https://chaundacdallas.com/contact">Contact</a>
+      <a href="https://chaundacdallas.com/services">Services</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Learn More</div>
+      <a href="https://chaundacdallas.com/#about">About</a>
+      <a href="https://chaundacdallas.com/expertise">Expertise</a>
+      <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Resources</div>
+      <a href="https://chaundacdallas.com/resources">Resources</a>
+      <a href="https://chaundacdallas.com/playbook">Playbook</a>
+      <a href="https://chaundacdallas.com/documentary">Documentary</a>
+    </div>
+    <div class="ccd-footer-col">
+      <div class="ccd-footer-heading">Community &amp; Tools</div>
+      <a href="https://chaundacdallas.com/wicys">WiCyS</a>
+      <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
+    </div>
+    <div class="ccd-footer-bottom">
+      <span>© 2026 Chaunda C. Dallas LLC</span>
+      <span>Resume removed · Service hub updated</span>
+    </div>
+  </footer>
 
 </div>
 </body>
