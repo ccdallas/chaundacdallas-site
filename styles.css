@@ -92,6 +92,23 @@ a{color:inherit}
 .expertise-secondary h3{font-size:.92rem;color:var(--white-dim)}
 .expertise-tag-secondary{background:transparent;border:1px solid var(--border);color:var(--white-dim);font-weight:500}
 
+.framework-intro{color:var(--white-dim);font-size:.98rem;line-height:1.75;max-width:680px}
+
+.dfr-phase{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border)}
+.dfr-phase:last-child{border-bottom:none}
+.dfr-phase-num{
+  font-family:Georgia,serif;font-size:1.8rem;font-weight:700;color:var(--gold);
+  min-width:44px;line-height:1
+}
+.dfr-phase-body h3{font-family:Georgia,serif;font-size:1.1rem;font-weight:600;color:var(--crimson);margin-bottom:4px}
+.dfr-phase-sub{
+  font-family:Arial,sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--white-dim);opacity:.6;margin-bottom:10px
+}
+.dfr-phase-body p{color:var(--white-dim);font-size:.9rem;line-height:1.65;margin-bottom:6px}
+.dfr-phase-body p:last-child{margin-bottom:0}
+.dfr-phase-body strong{color:var(--white)}
+
 .ccd-footer{
   border-top:1px solid var(--border);padding:28px 28px 36px;
   display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap
