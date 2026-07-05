@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Digital First Responder Framework — Chaunda C. Dallas</title>
-  <meta name="description" content="The DFR Framework maps clinical response to cybersecurity incident response through triage, stabilize, treat, and recover.">
-  <link rel="stylesheet" href="styles.css">
+  <title>Anatomy of a Healthcare Ransomware Incident — Chaunda C. Dallas</title>
+  <meta name="description" content="A composite walkthrough of a hospital ransomware incident, mapped through the DFR Framework: Triage, Stabilize, Treat, Recover.">
+  <link rel="stylesheet" href="https://chaundacdallas.com/styles.css">
 </head>
 <body>
 
@@ -16,9 +16,9 @@
       <a href="https://chaundacdallas.com/#about">About</a>
       <a href="https://chaundacdallas.com/expertise">Expertise</a>
       <a href="https://chaundacdallas.com/services">Services</a>
-      <a href="https://chaundacdallas.com/dfr-framework" class="active">DFR Framework</a>
+      <a href="https://chaundacdallas.com/dfr-framework">DFR Framework</a>
       <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
-      <a href="https://chaundacdallas.com/playbook">Playbook</a>
+      <a href="https://chaundacdallas.com/playbook" class="active">Playbook</a>
       <a href="https://chaundacdallas.com/documentary">Documentary</a>
       <a href="https://chaundacdallas.com/resources">Resources</a>
       <a href="https://chaundacdallas.com/contact">Contact</a>
@@ -28,73 +28,60 @@
 
   <main class="page-shell">
     <section class="page-hero">
-      <div class="page-kicker">Framework</div>
-      <h1>The DFR Framework</h1>
-      <p>The Digital First Responder Framework maps clinical emergency response to cybersecurity incident response — the same decision method, applied to a patient, a hospital network, or a connected device. <strong>Triage. Stabilize. Treat. Recover.</strong></p>
+      <div class="page-kicker">Field Note · DFR Framework in Action</div>
+      <h1>Anatomy of a Healthcare Ransomware Incident</h1>
+      <p>A composite scenario, built from patterns common across real healthcare ransomware incidents — mapped phase by phase through the DFR Framework.</p>
       <div class="page-actions">
+        <a href="https://chaundacdallas.com/playbook" class="btn-secondary">← Back to Field Notes</a>
         <a href="https://chaundacdallas.com/book" class="btn-primary">Book a Session</a>
-        <a href="https://chaundacdallas.com/services" class="btn-secondary">View Services</a>
       </div>
     </section>
 
     <section class="page-placeholder">
-      <h2>Why this exists</h2>
-      <p class="framework-intro">28 years in clinical emergency medicine teaches you one thing before anything else: when something is failing, you don't wait for the full picture before you act. You triage. Cybersecurity incident response asks the exact same question under the exact same pressure — what's actually critical, what can wait, and what do you do in the next five minutes. The DFR Framework is that clinical instinct, made explicit and applied to healthcare cyber risk.</p>
-    </section>
+      <div class="note-body">
+        <div class="note-meta-bar">
+          <span>Composite scenario</span>
+          <span>Incident Response · IoMT</span>
+          <span>~6 min read</span>
+        </div>
 
-    <section class="page-placeholder">
-      <h2>The four phases</h2>
-      <div class="dfr-phase">
-        <div class="dfr-phase-num">01</div>
-        <div class="dfr-phase-body">
-          <h3>Triage</h3>
-          <p class="dfr-phase-sub">Clinical → Cyber</p>
-          <p><strong>In the ER:</strong> Rapid assessment the moment a patient arrives — what's life-threatening, what's urgent, what can wait.</p>
-          <p><strong>In an incident:</strong> Rapid assessment of what's actually been touched, what's critical to patient safety and operations, and what can wait until the next phase.</p>
-        </div>
-      </div>
-      <div class="dfr-phase">
-        <div class="dfr-phase-num">02</div>
-        <div class="dfr-phase-body">
-          <h3>Stabilize</h3>
-          <p class="dfr-phase-sub">Clinical → Cyber</p>
-          <p><strong>In the ER:</strong> Stop the bleeding, secure the airway — buy time before definitive treatment begins.</p>
-          <p><strong>In an incident:</strong> Contain the threat, isolate affected systems, stop lateral movement — buy time before full remediation.</p>
-        </div>
-      </div>
-      <div class="dfr-phase">
-        <div class="dfr-phase-num">03</div>
-        <div class="dfr-phase-body">
-          <h3>Treat</h3>
-          <p class="dfr-phase-sub">Clinical → Cyber</p>
-          <p><strong>In the ER:</strong> The actual intervention — treating the cause, not just the symptom.</p>
-          <p><strong>In an incident:</strong> Remediation — removing the threat, patching the actual vulnerability, restoring trust in the system rather than just restoring uptime.</p>
-        </div>
-      </div>
-      <div class="dfr-phase">
-        <div class="dfr-phase-num">04</div>
-        <div class="dfr-phase-body">
-          <h3>Recover</h3>
-          <p class="dfr-phase-sub">Clinical → Cyber</p>
-          <p><strong>In the ER:</strong> Monitoring, follow-up care, preventing relapse.</p>
-          <p><strong>In an incident:</strong> Post-incident review, hardening, and building the resilience that keeps this from happening the same way twice.</p>
-        </div>
-      </div>
-    </section>
+        <p>This is not one specific breach. It's a composite, built from patterns that repeat across real healthcare ransomware incidents — because the details that matter most, the ones most write-ups skip, are the same every time. Names, dates, and systems are illustrative.</p>
 
-    <section class="page-placeholder">
-      <h2>Where it applies</h2>
-      <div class="expertise-group">
-        <h3>Healthcare Cybersecurity</h3>
-        <p>The foundational use case — IoMT risk, medical device security, and clinical AI governance, triaged and treated the way a clinical team triages and treats a patient.</p>
-      </div>
-      <div class="expertise-group">
-        <h3>AI Red Team for Healthcare <span class="expertise-tag">Growth Lane</span></h3>
-        <p>Adversarial testing of clinical AI runs through the same four phases — what could fail, what needs to be contained before it reaches a patient, what gets fixed, and what gets hardened afterward.</p>
-      </div>
-      <div class="expertise-group expertise-secondary">
-        <h3>Sports Technology &amp; Wearable Security <span class="expertise-tag expertise-tag-secondary">Secondary / Future</span></h3>
-        <p>Same method, applied to athlete biometric data and wearable device risk.</p>
+        <h2>The setup</h2>
+        <p>3:40 AM. A regional hospital network's EHR access starts throwing intermittent errors. Nursing staff assume it's routine maintenance. By 4:15 AM, file shares across three departments are encrypted, and a ransom note appears on a shared radiology workstation. The SOC gets its first alert almost two hours after initial access — the actual entry point was a compromised vendor VPN credential, unused for eleven months before that night.</p>
+
+        <h2>01 · Triage</h2>
+        <p><strong>The clinical parallel:</strong> in an ER, triage isn't about fixing everything — it's about knowing what's about to kill someone first.</p>
+        <p><strong>In this incident:</strong> the first real decision isn't "how did they get in." It's "what's touching patient care right now." That means fast answers to three questions: Is the EHR read-only, write-capable, or down entirely? Are infusion pumps, imaging systems, or any connected device on the same segment as what's encrypted? Can clinical staff still verify medication orders and allergies without the system?</p>
+        <div class="note-clinical-impact">
+          <p><strong>Clinical impact:</strong> a hospital that treats this as "IT's ransomware problem" loses 45+ minutes deciding whether to divert ambulances. A hospital that triages IoMT exposure first makes that call in under 10.</p>
+        </div>
+
+        <h2>02 · Stabilize</h2>
+        <p><strong>The clinical parallel:</strong> stop the bleeding before you diagnose the cause. Buy time.</p>
+        <p><strong>In this incident:</strong> isolate the affected segments — but not blindly. Cutting network access to a nursing unit that still needs read access to allergy data creates a second, self-inflicted patient safety incident on top of the first. The stabilize phase here means segmenting by clinical function, not just by subnet: keep read-only EHR access alive wherever possible while cutting write access and lateral movement paths.</p>
+        <div class="note-clinical-impact">
+          <p><strong>Clinical impact:</strong> a blanket network shutdown "to be safe" is the equivalent of intubating a patient who just needed oxygen — it solves the wrong problem and creates a new one.</p>
+        </div>
+
+        <h2>03 · Treat</h2>
+        <p><strong>The clinical parallel:</strong> treat the cause, not just the symptom.</p>
+        <p><strong>In this incident:</strong> restoring from backup without closing the original access path (the unused vendor VPN credential) just resets the clock. Treatment means: rotating and re-scoping every third-party credential with standing access, confirming the specific initial-access vector before reconnecting anything to the network, and validating that restored systems — especially anything touching connected devices — come back with the same configuration they had, not a rushed rebuild that quietly drops a security control.</p>
+        <div class="note-clinical-impact">
+          <p><strong>Clinical impact:</strong> a device brought back online without configuration validation can silently lose the very control that made it safe to connect in the first place — and nobody finds out until the next incident.</p>
+        </div>
+
+        <h2>04 · Recover</h2>
+        <p><strong>The clinical parallel:</strong> monitoring, follow-up, and making sure it doesn't happen again the same way.</p>
+        <p><strong>In this incident:</strong> the after-action review has to answer a question most post-incident reports never ask: what would a clinician have needed to know, and when, to make a safer call in the first 30 minutes? That answer becomes the update to the downtime protocol — not just the patch list.</p>
+
+        <h2>Why this matters beyond one incident</h2>
+        <p>Most incident response frameworks are written by people who have never had to make a call at 2 AM with a patient in front of them and no system to check. The DFR Framework exists because that gap — between "the system is technically remediated" and "a clinician can safely trust it again" — is where healthcare cybersecurity actually lives.</p>
+
+        <div class="page-actions">
+          <a href="https://chaundacdallas.com/dfr-framework" class="btn-secondary">More on the DFR Framework</a>
+          <a href="https://chaundacdallas.com/contact" class="btn-primary">Discuss Your Environment</a>
+        </div>
       </div>
     </section>
   </main>
@@ -123,7 +110,7 @@
       <a href="https://chaundacdallas.com/documentary">Documentary</a>
     </div>
     <div class="ccd-footer-col">
-      <div class="ccd-footer-heading">Community & Tools</div>
+      <div class="ccd-footer-heading">Community &amp; Tools</div>
       <a href="https://chaundacdallas.com/wicys">WiCyS</a>
       <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
     </div>
