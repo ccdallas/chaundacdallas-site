@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WiCyS Mentoring — Chaunda C. Dallas</title>
+<title>Book a Session — Chaunda C. Dallas</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --crimson: #1E5040;
-    --crimson-dim: rgba(30,80,64,0.10);
-    --crimson-glow: rgba(224,168,62,0.18);
+    --crimson-dim: rgba(30,80,64,0.12);
+    --crimson-glow: rgba(224,168,62,0.2);
     --pulse: #8B1E24;
     --black: #F3ECDD;
     --deep: #EAE0C8;
     --surface: #FFFFFF;
+    --surface-raised: #FFFFFF;
     --white: #3D4142;
     --white-dim: rgba(61,65,66,0.6);
-    --white-faint: rgba(61,65,66,0.12);
+    --white-faint: rgba(61,65,66,0.15);
     --gold: #E0A83E;
-    --gold-dim: rgba(224,168,62,0.14);
+    --gold-dim: rgba(224,168,62,0.15);
     --border: rgba(61,65,66,0.14);
-    --border-accent: rgba(30,80,64,0.25);
+    --border-accent: rgba(30,80,64,0.3);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,68 +31,61 @@
     color: var(--white);
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: radial-gradient(ellipse 60% 40% at 20% 10%, rgba(30,80,64,0.06) 0%, transparent 55%);
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 15%, rgba(30,80,64,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 70% at 85% 85%, rgba(224,168,62,0.04) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
-  }
-
-  /* ── UNIVERSAL NAV ── */
-  .ccd-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:14px 28px;background:rgba(243,236,221,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,80,64,0.18);font-family:'DM Mono',ui-monospace,monospace;}
-  .ccd-nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.01em;color:#3D4142;text-decoration:none;white-space:nowrap;}
-  .ccd-nav-dot{color:#1E5040;}
-  .ccd-nav-links{display:flex;gap:24px;flex-wrap:wrap;}
-  .ccd-nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(61,65,66,0.6);text-decoration:none;padding:4px 0;position:relative;transition:color .2s ease;}
-  .ccd-nav-links a:hover{color:#3D4142;}
-  .ccd-nav-links a.active{color:#1E5040;}
-  .ccd-nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#1E5040;}
-  .nav-book{background:#E0A83E;color:#3D4142!important;padding:8px 14px;border-radius:2px;transition:background .2s ease;}
-  .nav-book:hover{background:#C48F2E;color:#3D4142!important;}
-  @media (max-width:600px){.ccd-nav{padding:12px 18px;gap:10px;}.ccd-nav-brand{font-size:16px;}.ccd-nav-links{gap:16px;width:100%;}.ccd-nav-links a{font-size:10px;letter-spacing:0.12em;}}
-
-  .ecg-bar {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, var(--pulse), transparent 50%);
-    opacity: 0;
-    animation: fadeIn 1s ease 0.1s forwards;
   }
 
   .container {
     position: relative;
     z-index: 1;
-    max-width: 680px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 0 28px 100px;
   }
 
+  /* ── ECG LINE HEADER DECORATION ── */
+  .ecg-bar {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--pulse), transparent 60%);
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+  }
+
   /* ── HEADER ── */
   .header {
-    padding: 56px 0 44px;
+    padding: 60px 0 52px;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.2s forwards;
   }
 
-  .eyebrow {
+  .header-eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--crimson);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .eyebrow::after {
+  .header-eyebrow::after {
     content: '';
-    width: 40px;
+    flex: 1;
+    max-width: 60px;
     height: 1px;
     background: var(--crimson);
     opacity: 0.4;
@@ -99,9 +93,17 @@
 
   .header h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5.5vw, 3.2rem);
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
     font-weight: 300;
-    line-height: 1.12;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    font-weight: 600;
     color: var(--white);
   }
 
@@ -111,59 +113,80 @@
   }
 
   .header-sub {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
+    font-size: 13px;
+    font-weight: 300;
     color: var(--white-dim);
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
     margin-top: 14px;
-    opacity: 0.55;
+    max-width: 480px;
   }
 
-  /* ── WELCOME ── */
-  .welcome {
+  /* ── STATUS BANNER ── */
+  .status-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid rgba(30,80,64,0.2);
     border-left: 2px solid var(--crimson);
-    padding: 28px 32px;
-    margin-bottom: 48px;
+    padding: 14px 20px;
+    margin-bottom: 52px;
     background: var(--crimson-glow);
-    border-top: 1px solid var(--border-accent);
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
     opacity: 0;
     animation: fadeUp 0.8s ease 0.35s forwards;
   }
 
-  .welcome-greeting {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--white);
-    margin-bottom: 18px;
-    line-height: 1.3;
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--pulse);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
   }
 
-  .welcome-greeting strong { font-style: normal; font-weight: 600; }
+  .status-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--crimson);
+    letter-spacing: 0.06em;
+  }
 
-  .welcome p {
-    font-size: 14.5px;
-    font-weight: 300;
-    line-height: 1.85;
+  .status-text span {
     color: var(--white-dim);
-    margin-bottom: 14px;
   }
 
-  .welcome p:last-of-type { margin-bottom: 0; }
-  .welcome p strong { color: var(--white); font-weight: 500; }
-
-  .welcome-sig {
-    margin-top: 22px;
-    padding-top: 18px;
+  /* ── BIO ── */
+  .bio {
     border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 0;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.45s forwards;
+  }
+
+  .bio p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 20px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--white-dim);
+    max-width: 640px;
+  }
+
+  .bio p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .bio-signature {
+    margin-top: 22px;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 15px;
+    font-size: 17px;
     color: var(--gold);
+    letter-spacing: 0.01em;
   }
 
   /* ── SECTION LABEL ── */
@@ -173,12 +196,30 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--white-dim);
-    opacity: 0.45;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    opacity: 0.5;
   }
 
+  .section-label.zone {
+    opacity: 1;
+    color: var(--crimson);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .section-label.zone::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-label.zone.free { color: var(--gold); }
+
   /* ── SESSION CARDS ── */
-  .sessions { margin-bottom: 48px; }
+  .sessions { margin-bottom: 40px; }
 
   .session-card {
     border: 1px solid var(--border);
@@ -186,40 +227,36 @@
     margin-bottom: 2px;
     background: var(--deep);
     position: relative;
+    overflow: hidden;
     transition: border-color 0.25s ease;
     opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
   }
 
-  .session-card:first-child { border-radius: 2px 2px 0 0; }
-  .session-card:last-child  { border-radius: 0 0 2px 2px; margin-bottom: 0; }
-  .session-card:nth-child(1) { animation: fadeUp 0.8s ease 0.5s forwards; }
-  .session-card:nth-child(2) { animation: fadeUp 0.8s ease 0.62s forwards; }
-  .session-card:nth-child(3) { animation: fadeUp 0.8s ease 0.74s forwards; }
   .session-card:hover { border-color: var(--border-accent); }
 
-  .session-card.saturday {
-    border-color: rgba(224,168,62,0.2);
-    background: linear-gradient(135deg, rgba(224,168,62,0.03) 0%, var(--deep) 70%);
+  .session-card.featured {
+    border-color: rgba(30,80,64,0.25);
+    background: linear-gradient(135deg, rgba(30,80,64,0.04) 0%, var(--deep) 60%);
   }
 
-  .session-card.saturday::after {
-    content: 'NO BOOKING NEEDED';
+  .session-card.featured::before {
+    content: 'PRE-BLACK HAT';
     position: absolute;
-    top: 18px; right: 22px;
+    top: 20px; right: 24px;
     font-family: 'DM Mono', monospace;
-    font-size: 8.5px;
-    letter-spacing: 0.22em;
-    color: var(--gold);
-    opacity: 0.5;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--crimson);
+    opacity: 0.6;
   }
 
-  /* ── CARD HEADER ── */
   .session-top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 10px;
+    gap: 16px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
   }
 
@@ -228,183 +265,172 @@
     font-size: 22px;
     font-weight: 600;
     color: var(--white);
+    letter-spacing: -0.01em;
+    max-width: 60%;
   }
 
-  .badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
-
-  .badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    padding: 3px 9px;
-    text-transform: uppercase;
-    border-radius: 1px;
-  }
-
-  .badge-red     { background: var(--crimson-dim); color: #2C6B54; border: 1px solid var(--border-accent); }
-  .badge-neutral { background: var(--white-faint); color: var(--white-dim); border: 1px solid var(--border); }
-  .badge-gold    { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(224,168,62,0.2); }
-
-  /* ── AVAILABILITY PILLS ── */
-  .availability {
+  .session-badges {
     display: flex;
+    gap: 6px;
     flex-wrap: wrap;
-    gap: 7px;
-    margin: 14px 0 18px;
-  }
-
-  .avail-pill {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 1px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--white-dim);
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .avail-pill .dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--crimson);
     flex-shrink: 0;
   }
 
-  .avail-pill.saturday-pill .dot { background: #4caf6e; }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
 
-  /* ── DESC + TAGS ── */
+  .badge-duration {
+    background: var(--crimson-dim);
+    color: #2C6B54;
+    border: 1px solid var(--border-accent);
+  }
+
+  .badge-price {
+    background: var(--gold);
+    color: var(--white);
+    border: 1px solid var(--gold);
+    font-weight: 500;
+  }
+
+  .badge-day {
+    background: var(--white-faint);
+    color: var(--white-dim);
+    border: 1px solid var(--border);
+  }
+
+  .badge-open {
+    background: var(--gold-dim);
+    color: var(--gold);
+    border: 1px solid rgba(224,168,62,0.25);
+  }
+
   .session-desc {
     font-size: 14px;
     font-weight: 300;
-    line-height: 1.82;
+    line-height: 1.8;
     color: var(--white-dim);
     margin-bottom: 18px;
-    max-width: 520px;
+    max-width: 560px;
   }
 
-  .tags {
+  .session-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 7px;
     margin-bottom: 22px;
   }
 
   .tag {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 12px;
+    font-weight: 300;
     font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
     color: var(--white-dim);
     padding: 3px 10px;
     border: 1px solid var(--border);
     border-radius: 1px;
   }
 
-  /* ── MEET BLOCK ── */
-  .meet-block {
-    background: var(--surface);
-    border: 1px solid rgba(224,168,62,0.18);
-    padding: 18px 22px;
-    margin-top: 14px;
+  .cta-row {
     display: flex;
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
   }
 
-  .meet-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4caf6e;
-    flex-shrink: 0;
-    box-shadow: 0 0 7px rgba(76,175,110,0.5);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  .meet-info { flex: 1; min-width: 160px; }
-
-  .meet-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 3px;
-  }
-
-  .meet-url {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--white-dim);
-  }
-
-  /* ── BUTTONS ── */
-  .btn {
+  .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--white);
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 10.5px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 1px;
-    transition: all 0.2s ease;
-    cursor: pointer;
+    transition: background 0.2s ease;
     border: none;
+    cursor: pointer;
   }
 
-  .btn-primary { background: var(--gold); color: var(--white); }
   .btn-primary:hover { background: #C48F2E; }
 
-  .btn-gold {
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: transparent;
-    color: var(--gold);
-    border: 1px solid rgba(224,168,62,0.35);
-  }
-  .btn-gold:hover { background: var(--gold-dim); border-color: var(--gold); }
-
-  /* ── RESOURCES ── */
-  .resources {
+    color: var(--white-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    text-decoration: none;
+    border-radius: 1px;
     border: 1px solid var(--border);
-    padding: 28px 32px;
-    background: var(--deep);
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.85s forwards;
+    transition: all 0.2s ease;
+    cursor: pointer;
   }
 
-  .resources-label {
+  .btn-secondary:hover {
+    border-color: rgba(61,65,66,0.3);
+    color: var(--white);
+  }
+
+  /* ── PREP NOTE ── */
+  .prep {
+    border: 1px solid var(--border);
+    padding: 30px 32px;
+    margin-bottom: 56px;
+    background: var(--deep);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.95s forwards;
+  }
+
+  .prep-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--white-dim);
-    opacity: 0.45;
-    margin-bottom: 20px;
+    opacity: 0.5;
+    margin-bottom: 18px;
   }
 
-  .resource-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .resource-item { display: flex; gap: 16px; align-items: flex-start; }
+  .prep ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 
-  .resource-item::before {
-    content: '→';
+  .prep li {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--white-dim);
+    line-height: 1.7;
+    display: flex;
+    gap: 14px;
+  }
+
+  .prep li::before {
+    content: '—';
     color: var(--crimson);
     font-family: 'DM Mono', monospace;
-    font-size: 12px;
     flex-shrink: 0;
-    margin-top: 1px;
   }
 
-  .resource-name { font-size: 13.5px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
-  .resource-desc { font-size: 12.5px; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
+  .prep li strong { color: var(--white); font-weight: 500; }
 
   /* ── FOOTER ── */
   .ccd-footer {
@@ -412,45 +438,99 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 32px;
+    gap: 24px;
+    padding-top: 36px;
     border-top: 1px solid var(--border);
     opacity: 0;
-    animation: fadeUp 0.8s ease 0.95s forwards;
+    animation: fadeUp 0.8s ease 1.05s forwards;
   }
 
-  .ccd-footer-col { display: flex; flex-direction: column; gap: 8px; min-width: 130px; }
-  .ccd-footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .ccd-footer-col { display: flex; flex-direction: column; gap: 9px; min-width: 140px; }
+
+  .ccd-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
   .ccd-footer-brand span { color: var(--crimson); }
-  .ccd-footer-meta { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--white-dim); text-transform: uppercase; opacity: 0.45; }
-  .ccd-footer-heading { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
-  .ccd-footer-col a { font-family: 'DM Mono', monospace; font-size: 10.5px; color: var(--white-dim); text-decoration: none; opacity: 0.65; transition: all 0.2s ease; }
+
+  .ccd-footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .ccd-footer-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .ccd-footer-col a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--white-dim);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease;
+    opacity: 0.7;
+  }
+
   .ccd-footer-col a:hover { color: var(--crimson); opacity: 1; }
+
   .ccd-footer-bottom {
-    width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-    margin-top: 6px; padding-top: 16px; border-top: 1px solid var(--border);
-    font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--white-dim); opacity: 0.5;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--white-dim);
+    opacity: 0.55;
   }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.4; transform: scale(0.75); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
-  @media (max-width: 580px) {
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; opacity: 1 !important; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
     .container { padding: 0 18px 70px; }
-    .header { padding: 40px 0 34px; }
-    .welcome { padding: 22px 20px; }
+    .header { padding: 44px 0 40px; }
     .session-card { padding: 24px 20px; }
-    .resources { padding: 22px 18px; }
+    .session-title { max-width: 100%; }
+    .prep { padding: 22px 20px; }
     .ccd-footer { flex-direction: column; align-items: flex-start; }
-    .session-card.saturday::after { display: none; }
+    .session-top { flex-direction: column; }
   }
 </style>
 </head>
@@ -473,6 +553,19 @@
     <a href="https://chaundacdallas.com/book" class="nav-book">Book a Session</a>
   </div>
 </nav>
+<style>
+  .ccd-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:14px 28px;background:rgba(243,236,221,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,80,64,0.18);font-family:'DM Mono',ui-monospace,monospace;}
+  .ccd-nav-brand{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;letter-spacing:0.01em;color:#3D4142;text-decoration:none;white-space:nowrap;}
+  .ccd-nav-dot{color:#1E5040;}
+  .ccd-nav-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .ccd-nav-links a{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(61,65,66,0.6);text-decoration:none;padding:4px 0;position:relative;transition:color .2s ease;}
+  .ccd-nav-links a:hover{color:#3D4142;}
+  .ccd-nav-links a.active{color:#1E5040;}
+  .ccd-nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#1E5040;}
+  .nav-book{background:#E0A83E;color:#3D4142!important;padding:8px 14px;border-radius:2px;transition:background .2s ease;}
+  .nav-book:hover{background:#C48F2E;color:#3D4142!important;}
+  @media (max-width:600px){.ccd-nav{padding:12px 18px;gap:10px;}.ccd-nav-brand{font-size:16px;}.ccd-nav-links{gap:16px;width:100%;}.ccd-nav-links a{font-size:10px;letter-spacing:0.12em;}}
+</style>
 <!-- ===== END CCD NAV BAR ===== -->
 
 <div class="ecg-bar"></div>
@@ -481,172 +574,154 @@
 
   <!-- HEADER -->
   <div class="header">
-    <div class="eyebrow">WiCyS Technical Mentoring · Cohort 3</div>
-    <h1>I'm so glad<br>you're <span class="accent">here.</span></h1>
-    <p class="header-sub">Chaunda C. Dallas, MSIT · Healthcare Cybersecurity Strategist · Digital First Responder</p>
+    <div class="header-eyebrow">connect@chaundacdallas.com</div>
+    <h1>Book a <em>Session</em><br>with <span class="accent">Chaunda.</span></h1>
+    <p class="header-sub">Healthcare Cybersecurity Strategist · Digital First Responder<br>Featured Defender — <em>Midnight in the War Room</em>, Black Hat USA 2026</p>
   </div>
 
-  <!-- WELCOME -->
-  <div class="welcome">
-    <div class="welcome-greeting">Welcome to Cohort 3 — <strong>let's get to work.</strong></div>
-    <p>I'm Chaunda, your WiCyS Technical Mentor. I spent <strong>28 years in clinical emergency medicine</strong>, and I learned cybersecurity to defend the patients and devices I already knew inside out — so I know what it feels like to walk into a field where you don't see yourself reflected yet. That's exactly why I'm here.</p>
-    <p>Whether you have questions about the coursework, want help mapping your cert path, need someone to talk through your goals, or just want to show up on a Saturday and study alongside someone who's still in it with you — <strong>you're in the right place.</strong></p>
-    <p>My approach is simple: I meet you where you are. We assess, stabilize, and build a plan that fits your real life — not a template.</p>
-    <div class="welcome-sig">"I didn't leave healthcare. I learned to defend it." — Chaunda</div>
+  <!-- STATUS BANNER -->
+  <div class="status-banner">
+    <div class="pulse-dot"></div>
+    <div class="status-text">
+      BOOKING OPEN &nbsp;·&nbsp; <span>Limited 1:1 slots before Black Hat, Aug 5 — HIPAA assessments available for immediate start</span>
+    </div>
   </div>
 
-  <!-- SESSIONS -->
-  <div class="section-label">Schedule a Session</div>
+  <!-- BIO -->
+  <div class="bio">
+    <p>I spent <strong>28 years in clinical emergency medicine</strong> — and I never left it. I learned to defend it. My approach mirrors how I worked in the ER: <strong>assess, stabilize, treat, recover.</strong> We figure out where you are, address what's urgent, and build a plan that fits your real life.</p>
+    <p style="margin-top:14px;">I also offer <strong>HIPAA Security Risk Assessments</strong> for small healthcare practices — 5-day delivery, $2,500 flat fee.</p>
+    <div class="bio-signature">"I didn't leave healthcare. I learned to defend it."</div>
+  </div>
+
+  <!-- ════════ PAID SESSIONS ════════ -->
+  <div class="section-label zone">Work With Me — 1:1</div>
 
   <div class="sessions">
 
-    <!-- WICYS OFFICE HOURS -->
-    <div class="session-card">
+    <!-- STRATEGY SESSION (FEATURED / PAID) -->
+    <div class="session-card featured">
       <div class="session-top">
-        <div class="session-title">WiCyS Office Hours</div>
-        <div class="badges">
-          <span class="badge badge-red">30 Min</span>
+        <div class="session-title">ER-to-Cyber: 1:1 Strategy Session</div>
+        <div class="session-badges">
+          <span class="badge badge-duration">30 min</span>
+          <span class="badge badge-price">$60</span>
         </div>
       </div>
-
-      <div class="availability">
-        <div class="avail-pill"><span class="dot"></span>Tuesdays</div>
-        <div class="avail-pill"><span class="dot"></span>Thursdays</div>
-      </div>
-
-      <p class="session-desc">Reserved time for WiCyS mentees. Select a day, pick an open slot, fill in your info — and you're on the calendar. Bring your coursework questions, cert path questions, or anything on your mind.</p>
-
-      <div class="tags">
-        <span class="tag">Coursework questions</span>
+      <p class="session-desc">Resume, LinkedIn positioning, cert roadmap, healthcare cyber career path, or job-search strategy — for clinicians and healthcare professionals moving into cybersecurity. Payment collected at booking. Bring your resume or LinkedIn URL and a specific goal; we leave with a clear next step.</p>
+      <div class="session-tags">
+        <span class="tag">Clinical-to-cyber translation</span>
+        <span class="tag">Resume &amp; LinkedIn positioning</span>
         <span class="tag">Cert roadmap</span>
-        <span class="tag">Career direction</span>
-        <span class="tag">Blockers &amp; wins</span>
+        <span class="tag">Healthcare cyber path</span>
+        <span class="tag">Job search strategy</span>
       </div>
-
-      <a href="https://calendar.app.google/BtyC22XyDDh4zWdB9" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+      <div class="cta-row">
+        <a href="https://calendar.app.google/8zjP5oartL5pDTU38" class="btn-primary" target="_blank" rel="noopener">Book &amp; Pay — $60 ↗</a>
+      </div>
     </div>
 
-    <!-- 1:1 MENTOR SESSION -->
+    <!-- DEEP DIVE SESSION (60 MIN) -->
     <div class="session-card">
       <div class="session-top">
-        <div class="session-title">1:1 Mentor Session</div>
-        <div class="badges">
-          <span class="badge badge-red">30 Min</span>
+        <div class="session-title">Deep Dive: 1:1 Strategy Session</div>
+        <div class="session-badges">
+          <span class="badge badge-duration">60 min</span>
+          <span class="badge badge-price">$120</span>
         </div>
       </div>
-
-      <div class="availability">
-        <div class="avail-pill"><span class="dot"></span>Tuesdays</div>
-        <div class="avail-pill"><span class="dot"></span>Thursdays</div>
-      </div>
-
-      <p class="session-desc">A focused 30 minutes built around you. Select any available day, choose a time that works, and come ready to work. Bring your resume, job search blockers, cert questions, or your goals — we'll leave with a clear next step.</p>
-
-      <div class="tags">
-        <span class="tag">Resume &amp; positioning</span>
-        <span class="tag">Job search strategy</span>
-        <span class="tag">Healthcare cyber path</span>
-        <span class="tag">Technical deep dive</span>
+      <p class="session-desc">Extended session for a full career roadmap, resume overhaul, cert strategy, or job-search planning — for clinicians and healthcare professionals who need more time to dig deep. Payment collected at booking.</p>
+      <div class="session-tags">
+        <span class="tag">Resume overhaul</span>
+        <span class="tag">Career roadmap</span>
         <span class="tag">Cert strategy</span>
+        <span class="tag">Job search planning</span>
+        <span class="tag">LinkedIn optimization</span>
       </div>
-
-      <a href="https://calendar.app.google/417BVNHA43JPBEA17" class="btn btn-primary" target="_blank">Select a Date &amp; Time ↗</a>
+      <div class="cta-row">
+        <a href="https://calendar.app.google/id5gP6HPxrwBRvtw8" class="btn-primary" target="_blank" rel="noopener">Book &amp; Pay — $120 ↗</a>
+      </div>
     </div>
 
-    <!-- SATURDAY STUDY HALL -->
-    <div class="session-card saturday">
+    <!-- PROFESSIONAL CONSULTATION (ORG TIER → INTAKE FORM) -->
+    <div class="session-card">
       <div class="session-top">
-        <div class="session-title">Saturday Study Hall</div>
-        <div class="badges">
-          <span class="badge badge-neutral">Every Saturday</span>
-          <span class="badge badge-gold">1:00 – 2:00 PM EST</span>
+        <div class="session-title">Professional Consultation</div>
+        <div class="session-badges">
+          <span class="badge badge-day">By Request</span>
         </div>
       </div>
-
-      <div class="availability">
-        <div class="avail-pill saturday-pill"><span class="dot"></span>No booking needed — just show up</div>
+      <p class="session-desc">For organizations and teams navigating healthcare cybersecurity risk — IoMT security, clinical AI governance, HIPAA posture, or strategic advisory. Scoped to your need: advisory call, assessment, or retainer. Tell me what your team is up against and we'll find the right format.</p>
+      <div class="session-tags">
+        <span class="tag">IoMT / Medical Devices</span>
+        <span class="tag">Healthcare GRC</span>
+        <span class="tag">Clinical AI Risk</span>
+        <span class="tag">HIPAA posture</span>
+        <span class="tag">Security strategy</span>
       </div>
-
-      <p class="session-desc">Drop in every Saturday using the standing link below. Bring your TryHackMe questions, cert prep, resume, or just come to study alongside others. This is your open accountability hour. Multiple mentees welcome every week.</p>
-
-      <div class="tags">
-        <span class="tag">TryHackMe / HackTheBox</span>
-        <span class="tag">Cert prep</span>
-        <span class="tag">Ask me anything</span>
-        <span class="tag">Accountability</span>
-        <span class="tag">Study together</span>
+      <div class="cta-row">
+        <a href="https://chaundacdallas.com/intake?service=consult" class="btn-primary">Scope Your Engagement ↗</a>
       </div>
+    </div>
 
-      <div class="meet-block">
-        <div class="meet-dot"></div>
-        <div class="meet-info">
-          <div class="meet-label">Standing Link · Every Saturday 1:00 – 2:00 PM EST</div>
-          <div class="meet-url">https://meet.google.com/jey-dwbf-hvr</div>
+    <!-- HIPAA ASSESSMENT CARD (ORG TIER → INTAKE FORM) -->
+    <div class="session-card" style="border-color: rgba(224,168,62,0.4);">
+      <div class="session-top">
+        <div class="session-title">Emergency HIPAA Security Risk Assessment</div>
+        <div class="session-badges">
+          <span class="badge badge-open">5-Day Delivery</span>
+          <span class="badge badge-price" style="background: var(--crimson); border-color: var(--crimson); color: var(--black);">$2,500</span>
         </div>
-        <a href="https://meet.google.com/jey-dwbf-hvr" class="btn btn-gold" target="_blank">Join the Room ↗</a>
+      </div>
+      <p class="session-desc">For small-to-mid-size healthcare practices, dental groups, and health-tech startups that need a HIPAA Security Risk Assessment — fast. I assess your gaps, deliver a report, and give you a remediation roadmap. No fluff. No jargon. Just what you need to fix.</p>
+      <div class="session-tags">
+        <span class="tag">Gap analysis</span>
+        <span class="tag">Risk analysis (HHS methodology)</span>
+        <span class="tag">Remediation roadmap</span>
+        <span class="tag">90-minute walkthrough</span>
+      </div>
+      <div class="cta-row">
+        <a href="https://chaundacdallas.com/intake?service=hipaa" class="btn-primary" style="background: var(--gold); border-color: var(--gold); color: var(--black);">Start Your Assessment ↗</a>
       </div>
     </div>
 
   </div>
 
-  <!-- RESOURCES -->
-  <div class="resources">
-    <div class="resources-label">Recommended Starting Points</div>
-    <ul class="resource-list">
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">TryHackMe</div>
-          <div class="resource-desc">Best starting point — guided, beginner-friendly, structured learning paths. Start here before HackTheBox.</div>
+  <!-- ════════ FREE & COMMUNITY → /wicys ════════ -->
+  <div class="section-label zone free">Free &amp; Community</div>
+
+  <div class="sessions">
+
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-title">WiCyS Mentees &amp; Free Community Study</div>
+        <div class="session-badges">
+          <span class="badge badge-open">Cohort 3 · Free</span>
         </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">HackTheBox Academy</div>
-          <div class="resource-desc">Next level after TryHackMe. More challenging, closer to real-world scenarios.</div>
-        </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">eJPT — eLearnSecurity Junior Penetration Tester</div>
-          <div class="resource-desc">Entry-level cert with real weight. Great first offensive security credential without years of experience required.</div>
-        </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">CompTIA Security+ / PenTest+</div>
-          <div class="resource-desc">Industry-standard baseline (Security+) and a strong next step toward penetration testing (PenTest+).</div>
-        </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">Digital First Responder Lab</div>
-          <div class="resource-desc">My IoMT threat intelligence lab — real healthcare cybersecurity scenarios showing what defending clinical environments actually looks like.</div>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <p class="session-desc">Assigned WiCyS mentees and free drop-in community study live on a dedicated page — booking, the standing Meet room, and your start-here roadmap are all there. The Saturday Study Hall is open to anyone who wants to show up, WiCyS mentee or not.</p>
+      <div class="session-tags">
+        <span class="tag">WiCyS mentees</span>
+        <span class="tag">Saturday Study Hall</span>
+        <span class="tag">TryHackMe · Security+</span>
+        <span class="tag">Accountability</span>
+      </div>
+      <div class="cta-row">
+        <a href="https://chaundacdallas.com/wicys" class="btn-primary" target="_blank" rel="noopener">Go to the WiCyS Page ↗</a>
+      </div>
+    </div>
+
   </div>
 
-  <div class="resources">
-    <div class="resources-label">Recognition &amp; Community</div>
-    <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">WiCyS × Google Cybersecurity Certificate Program — Technical Mentor</div>
-          <div class="resource-desc">Third consecutive cohort (2024–2026), mentoring alongside Angela Reeder.</div>
-        </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">WiCyS UC Berkeley Student Chapter — Black History Month Panel</div>
-          <div class="resource-desc">February 2026. Panelist alongside Diana Henderson, Danielle Dorvil, and Joan Oladapo, discussing career pathways as Black women in cybersecurity.</div>
-        </div>
-      </li>
-      <li class="resource-item">
-        <div>
-          <div class="resource-name">Midnight in the War Room × WiCyS — Lunch-n-Learn Panel</div>
-          <div class="resource-desc">April 2026. WiCyS served as Action Partner for the Semperis documentary; panel with Krista Arndt, moderated by Heather M. Costa. <a href="https://chaundacdallas.com/documentary" style="color:inherit;text-decoration:underline;">More on the documentary</a>.</div>
-        </div>
-      </li>
+  <!-- PREP NOTE -->
+  <div class="prep">
+    <div class="prep-label">How to make the most of our time</div>
+    <ul>
+      <li>For the <strong>strategy or Deep Dive session</strong>: bring your current resume or LinkedIn. We work from what's real.</li>
+      <li>Need a <strong>HIPAA assessment or advisory engagement</strong>? Use the intake form to scope it — takes about two minutes, and it lands with me right away.</li>
+      <li><strong>WiCyS mentees &amp; free study:</strong> head to <strong>chaundacdallas.com/wicys</strong> for the Saturday Study Hall and your roadmap.</li>
+      <li>Paid sessions are booked and paid through the calendar link; you'll get a confirmation email with the Google Meet details automatically.</li>
+      <li>Can't find a time? Email <strong>connect@chaundacdallas.com</strong> and we'll sort it out.</li>
     </ul>
   </div>
 
@@ -681,7 +756,7 @@
     </div>
     <div class="ccd-footer-bottom">
       <span>© 2026 Chaunda C. Dallas LLC</span>
-      <span>Resume removed · Service hub updated</span>
+      <span>connect@chaundacdallas.com</span>
     </div>
   </footer>
 
