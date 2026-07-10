@@ -419,15 +419,16 @@
     font-weight: 300;
     color: var(--white-dim);
     line-height: 1.7;
-    display: flex;
-    gap: 14px;
+    position: relative;
+    padding-left: 28px;
   }
 
   .prep li::before {
     content: '—';
     color: var(--crimson);
     font-family: 'DM Mono', monospace;
-    flex-shrink: 0;
+    position: absolute;
+    left: 0;
   }
 
   .prep li strong { color: var(--white); font-weight: 500; }
