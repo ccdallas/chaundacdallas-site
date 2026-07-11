@@ -13,6 +13,7 @@ Flag any violation BEFORE building; do not silently "fix" copy in ways that brea
 - Core tagline: "I didn't leave healthcare. I learned to defend it."
 - NEVER frame her as "transitioning," "pivoting," "crossing over," or "leaving" healthcare. She never left.
 - CNA is a certification, never a job title. Correct title progression: ER Tech -> Lead ER Tech -> Epic Super User -> Clinical Coordinator. Never write "CNA ->" or "CNA & Registration Clerk" as a role.
+- Canonical Piedmont display title: "Epic Super User, Clinical Preceptor & Lead ER Tech". Use this exact string wherever the Piedmont role is titled (site timeline, About copy, resume).
 - Never reference "Former RN."
 - CompTIA Security+ is NOT earned — do not list it as a completed cert. Current cert target is Microsoft SC-900.
 - Every public section should touch >=2 of: Healthcare, Patient Safety, Connected Devices, Human Consequence.
