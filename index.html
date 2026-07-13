@@ -355,7 +355,7 @@
   .divider { height: 1px; background: var(--border); margin: 0 48px; }
 
   /* ABOUT */
-  #about { background: var(--deep); }
+  #about { background: var(--black); }
 
   .about-grid {
     display: grid;
@@ -413,9 +413,7 @@
   .timeline-content h4 { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.88rem; color: var(--white); margin-bottom: 4px; }
   .timeline-content p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin: 0; }
 
-  /* ADVANTAGE */
-  #advantage { background: var(--black); }
-
+  /* ADVANTAGE (merged into #dfr) */
   .advantage-hero {
     background: linear-gradient(135deg, var(--crimson) 0%, #123024 100%);
     border-radius: 4px;
@@ -490,7 +488,7 @@
   .service-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--crimson); font-size: 0.7rem; }
 
   /* DOCUMENTARY */
-  #documentary { background: var(--black); }
+  #documentary { background: var(--deep); }
   .doc-inner { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
 
   .doc-feature {
@@ -542,20 +540,11 @@
   .phase-content h4 { font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 4px; }
   .phase-content p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
 
-  /* LAB */
+  /* PROOF / LIVE WORK */
   #lab { background: var(--black); }
 
-  .lab-feature { margin-top: 48px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .lab-feature h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
-  .lab-feature p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
-
-  .lab-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .lab-stat { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 16px; text-align: center; }
-  .lab-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--crimson); line-height: 1; margin-bottom: 4px; }
-  .lab-stat-label { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
-
   /* RECOGNITION */
-  #recognition { background: var(--deep); }
+  #recognition { background: var(--black); }
 
   .recognition-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
 
@@ -570,7 +559,7 @@
   .comm-tag { background: var(--card); border: 1px solid var(--border); color: var(--light); font-size: 0.78rem; padding: 6px 14px; border-radius: 20px; }
 
   /* FEDERAL */
-  #federal { background: var(--black); }
+  #federal { background: var(--deep); }
 
   .federal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; align-items: start; }
   .credentials-block { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 36px; }
@@ -589,7 +578,7 @@
   .naics-desc { font-size: 0.78rem; color: var(--muted); text-align: right; }
 
   /* CONTACT */
-  #contact { background: var(--deep); }
+  #contact { background: var(--black); }
 
   .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start; }
 
@@ -641,59 +630,6 @@
   .optin-note { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); margin-top: 16px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
   .optin-note::before { content: '🔒'; font-size: 0.75rem; }
 
-  /* ── NEW: mentoring section ── */
-  #mentoring { background: var(--black); }
-
-  .mentoring-feature {
-    margin-top: 48px;
-    background: var(--surface);
-    border: 1px solid rgba(224,168,62,0.15);
-    border-radius: 4px;
-    padding: 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .mentoring-feature::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--gold), transparent 60%);
-  }
-
-  .mentoring-feature h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.2; }
-  .mentoring-cohort { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .mentoring-feature p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
-
-  .mentoring-sessions { display: flex; flex-direction: column; gap: 12px; }
-
-  .mentoring-session-row {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-
-  .mentoring-session-row:hover { border-color: rgba(224,168,62,0.35); }
-
-  .session-row-left h5 { font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 3px; }
-  .session-row-left p { font-size: 0.75rem; color: var(--muted); }
-  .session-row-badge { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 1px; white-space: nowrap; }
-  .badge-crimson { background: var(--crimson-dim); color: #2C6B54; border: 1px solid rgba(30,80,64,0.25); }
-  .badge-gold { background: rgba(224,168,62,0.1); color: var(--gold); border: 1px solid rgba(224,168,62,0.2); }
-
   /* FOOTER */
   footer {
     background: var(--deep);
@@ -739,7 +675,7 @@
     .ccd-nav-links { display: none; }
     #hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 40px; }
     .hero-bg-line { display: none; }
-    .about-grid, .dfr-layout, .doc-feature, .federal-grid, .contact-layout, .lab-feature, .mentoring-feature { grid-template-columns: 1fr; }
+    .about-grid, .dfr-layout, .doc-feature, .federal-grid, .contact-layout { grid-template-columns: 1fr; }
     .services-grid, .advantage-cards { grid-template-columns: 1fr; }
     .recognition-grid { grid-template-columns: 1fr; }
     .section-inner, .doc-inner { padding: 60px 20px; }
@@ -824,77 +760,13 @@
         <div class="stat-sub">3rd Consecutive Year · 2026</div>
       </div>
     </div>
-    <div class="hero-stat-card" style="animation-delay:0.4s;">
+    <a class="hero-stat-card" href="#lab" style="animation-delay:0.4s; text-decoration:none; color:inherit;">
       <div class="stat-num">9</div>
       <div>
         <div class="stat-label">IoMT Failure Scenarios — DFR Lab</div>
         <div class="stat-sub">0 hypotheticals · All built from reality</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">Origin Story</div>
-    <h2 class="section-title">A healthcare professional<br><em>who learned to fight back.</em></h2>
-    <div class="about-grid">
-      <div class="about-text fade-up">
-        <p>For 28 years I worked high-pressure clinical environments — the ER and outpatient surgical care — where physicians, nurses, and leadership depended on my judgment. When ransomware and digital risk began threatening patient safety, I earned my MSIT in cybersecurity to keep protecting patients — now from behind the scenes instead of at the bedside.</p>
-      </div>
-      <div class="career-timeline fade-up">
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>ER Tech</h4><p>Started on the floor. Learned the system from the ground up.</p></div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Lead ER Tech &amp; Epic Super User</h4><p>Clinical decision-making under pressure. Zero margin for error.</p></div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Clinical Coordinator</h4><p>Leadership and scope across ER and outpatient surgical care.</p></div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>MSIT · Healthcare Cybersecurity</h4><p>Kennesaw State University. Medical device security concentration.</p></div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Healthcare Cybersecurity Strategist</h4><p>IoMT security, GRC, clinical risk — at enterprise scale.</p></div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Featured Defender · Black Hat USA 2026</h4><p>Midnight in the War Room. Semperis. Global stage.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ADVANTAGE -->
-<section id="advantage">
-  <div class="section-inner">
-    <div class="section-label">The Differentiator</div>
-    <h2 class="section-title">The Clinical Eyes<br><em>Advantage</em></h2>
-    <div class="advantage-hero fade-up">
-      <h3>Because in healthcare, "system down"<br>is a patient safety crisis.</h3>
-      <p>In the ER and OR, there is no "IT ticket" for a life-critical system failure. You need security that understands the velocity of care. We bridge the gap between technical defense and clinical reality — approaching cyber risk like trauma triage: prioritize what harms patients first, stabilize fast, build defenses that hold under extreme pressure.</p>
-    </div>
-    <div class="advantage-cards">
-      <div class="adv-card fade-up"><div class="adv-icon">🏥</div><h4>Clinical Workflow Intelligence</h4><p>Understanding how nurses, techs, and physicians actually interact with connected systems — where workarounds create vulnerabilities, and where security controls must bend to care delivery.</p></div>
-      <div class="adv-card fade-up"><div class="adv-icon">⚡</div><h4>Triage-Speed Risk Assessment</h4><p>Rapid assessment under pressure translates directly. Identify critical risks, prioritize by patient impact, and mobilize the right response — without slowing clinical operations.</p></div>
-      <div class="adv-card fade-up"><div class="adv-icon">🔐</div><h4>OpSec by Design</h4><p>Security architecture built with the end user in mind. Controls clinicians actually follow. Policies that survive the pace of real care environments — not just audit checklists.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-inner">
-    <div class="section-label">How We Engage</div>
-    <h2 class="section-title">Core<br><em>Delivery Areas</em></h2>
-    <div class="services-grid">
-      <div class="service-card fade-up"><div class="service-num">01</div><h3>IoMT & Clinical AI Risk</h3><p>Device and system threat modeling in live clinical environments. AI governance for FDA- and audit-facing products.</p><ul class="service-bullets"><li>Threat modeling in clinical settings</li><li>AI governance & FDA-facing documentation</li><li>Risk assessments respecting bedside workflows</li><li>Connected device inventory & vulnerability mapping</li></ul></div>
-      <div class="service-card fade-up"><div class="service-num">02</div><h3>Healthcare GRC & Audit Readiness</h3><p>HIPAA, NIST, SOC 2 alignment without operational disruption. Policy clinicians actually follow.</p><ul class="service-bullets"><li>HIPAA Security Rule compliance</li><li>HIPAA Security Risk Assessments — 5-day delivery</li><li>NIST CSF & SOC 2 framework alignment</li><li>Policy & control development</li><li>Federal healthcare subcontract support</li></ul></div>
-      <div class="service-card fade-up"><div class="service-num">03</div><h3>Incident Readiness & Clinical Resilience</h3><p>Ransomware and downtime planning for EHR and device environments. Tabletops that prepare real clinical teams.</p><ul class="service-bullets"><li>EHR & device downtime planning</li><li>Executive & clinical tabletop exercises</li><li>Ransomware response playbooks</li><li>Nation-state & hacktivist threat briefings</li></ul></div>
-    </div>
-    <div style="margin-top:32px; background:var(--card); border:1px solid var(--border); border-radius:4px; padding:28px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;" class="fade-up">
-      <div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:var(--white); margin-bottom:6px;">Engagement Models</div>
-        <div style="font-size:0.8rem; color:var(--muted);">Subcontract support · Embedded advisor · Short-term assessments · Fractional clinical-security expertise · Remote-first with on-site availability</div>
-      </div>
-      <a href="#contact" class="btn-primary">Discuss Availability</a>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -931,16 +803,42 @@
 
 <div class="divider"></div>
 
-<!-- DFR FRAMEWORK -->
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Origin Story</div>
+    <h2 class="section-title">A healthcare professional<br><em>who learned to fight back.</em></h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>For 28 years I worked high-pressure clinical environments — the ER and outpatient surgical care — where physicians, nurses, and leadership depended on my judgment. When ransomware and digital risk began threatening patient safety, I earned my MSIT in cybersecurity to keep protecting patients — same mission, wider perimeter: the bedside, and now every connected system behind it.</p>
+      </div>
+      <div class="career-timeline fade-up">
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>ER Tech</h4><p>Started on the floor. Learned the system from the ground up.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Lead ER Tech &amp; Epic Super User</h4><p>Clinical decision-making under pressure. Zero margin for error.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Clinical Coordinator</h4><p>Leadership and scope across ER and outpatient surgical care.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>MSIT · Healthcare Cybersecurity</h4><p>Kennesaw State University. Medical device security concentration.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Healthcare Cybersecurity Strategist</h4><p>IoMT security, GRC, clinical risk — at enterprise scale.</p></div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4>Featured Defender · Black Hat USA 2026</h4><p>Midnight in the War Room. Semperis. Global stage.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CLINICAL EYES ADVANTAGE + DFR FRAMEWORK -->
 <section id="dfr">
   <div class="section-inner">
-    <div class="section-label">Proprietary Methodology</div>
-    <h2 class="section-title">The Digital First<br><em>Responder Framework</em></h2>
+    <div class="section-label">The Differentiator</div>
+    <h2 class="section-title">The Clinical Eyes<br><em>Advantage</em></h2>
+    <div class="advantage-hero fade-up">
+      <h3>Because in healthcare, "system down"<br>is a patient safety crisis.</h3>
+      <p>In the ER and OR, there is no "IT ticket" for a life-critical system failure. You need security that understands the velocity of care. We bridge the gap between technical defense and clinical reality — approaching cyber risk like trauma triage: prioritize what harms patients first, stabilize fast, build defenses that hold under extreme pressure.</p>
+    </div>
     <div class="dfr-layout">
       <div class="fade-up">
         <div class="dfr-anchor">"I call it the Digital First Responder Framework — because that's exactly what it is."</div>
         <p class="dfr-desc">Born from emergency triage principles, the DFR Framework maps clinical emergency response directly onto cybersecurity incident response. It's not a metaphor — it's a methodology. The same instincts that stabilize a crashing patient stabilize a compromised network.</p>
-        <a href="https://lab.chaundacdallas.com" class="btn-secondary" target="_blank">Explore the Lab →</a>
       </div>
       <div class="dfr-phases fade-up">
         <div class="dfr-phase"><div class="phase-label">Triage</div><div class="phase-content"><h4>Rapid Threat Assessment</h4><p>Identify what's critical, what's stable, what's failing. Prioritize by patient — and patient safety — impact first.</p></div></div>
@@ -954,23 +852,37 @@
 
 <div class="divider"></div>
 
-<!-- DFR LAB -->
+<!-- PROOF / LIVE WORK -->
 <section id="lab">
   <div class="section-inner">
-    <div class="section-label">Live Portfolio</div>
-    <h2 class="section-title">Digital First<br><em>Responder Lab</em></h2>
-    <div class="lab-feature fade-up">
+    <div class="section-label">Proof · Live Work</div>
+    <h2 class="section-title">Three live builds.<br><em>Zero hypotheticals.</em></h2>
+    <div class="advantage-cards">
+      <div class="adv-card fade-up"><div class="adv-icon">🧪</div><h4>DFR Lab</h4><p>9 IoMT failure scenarios built from real device dependency. No hypotheticals.</p><a href="https://lab.chaundacdallas.com/" class="btn-secondary" style="margin-top:18px;" target="_blank" rel="noopener">Enter the Lab →</a></div>
+      <div class="adv-card fade-up"><div class="adv-icon">🌙</div><h4>NightShift Cyber Range</h4><p>A branching tabletop: ransomware hits the med room. 12 decisions across Triage → Stabilize → Treat → Recover. Rookie, Pro, and Command tiers.</p><a href="https://range.chaundacdallas.com/" class="btn-secondary" style="margin-top:18px;" target="_blank" rel="noopener">Run the Range →</a></div>
+      <div class="adv-card fade-up"><div class="adv-icon">📡</div><h4>Healthcare Ransomware Intelligence Tracker</h4><p>Live threat intel, ranked by clinical impact — not just CVSS.</p><a href="https://lab.chaundacdallas.com/" class="btn-secondary" style="margin-top:18px;" target="_blank" rel="noopener">Open in the Lab →</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">How We Engage</div>
+    <h2 class="section-title">Core<br><em>Delivery Areas</em></h2>
+    <div class="services-grid">
+      <div class="service-card fade-up"><div class="service-num">01</div><h3>IoMT & Clinical AI Risk</h3><p>Device and system threat modeling in live clinical environments. AI governance for FDA- and audit-facing products.</p><ul class="service-bullets"><li>Threat modeling in clinical settings</li><li>AI governance & FDA-facing documentation</li><li>Risk assessments respecting bedside workflows</li><li>Connected device inventory & vulnerability mapping</li></ul></div>
+      <div class="service-card fade-up"><div class="service-num">02</div><h3>Healthcare GRC & Audit Readiness</h3><p>HIPAA, NIST, SOC 2 alignment without operational disruption. Policy clinicians actually follow.</p><ul class="service-bullets"><li>HIPAA Security Rule compliance</li><li>HIPAA Security Risk Assessments — 5-day delivery</li><li>NIST CSF & SOC 2 framework alignment</li><li>Policy & control development</li><li>Federal healthcare subcontract support</li></ul></div>
+      <div class="service-card fade-up"><div class="service-num">03</div><h3>Incident Readiness & Clinical Resilience</h3><p>Ransomware and downtime planning for EHR and device environments. Tabletops that prepare real clinical teams.</p><ul class="service-bullets"><li>EHR & device downtime planning</li><li>Executive & clinical tabletop exercises</li><li>Ransomware response playbooks</li><li>Nation-state & hacktivist threat briefings</li></ul></div>
+    </div>
+    <div style="margin-top:32px; background:var(--card); border:1px solid var(--border); border-radius:4px; padding:28px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;" class="fade-up">
       <div>
-        <h3>Where connected medical systems actually fail.</h3>
-        <p>A live IoMT risk education platform built from clinical experience and lived device dependency. 9 real failure scenarios. A live Healthcare Ransomware Intelligence Tracker. Interactive Decision Mode. Professional and Student Mode. No hypotheticals — every scenario is built from reality.</p>
-        <a href="https://lab.chaundacdallas.com" class="btn-primary" target="_blank">Explore the Lab →</a>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:var(--white); margin-bottom:6px;">Engagement Models</div>
+        <div style="font-size:0.8rem; color:var(--muted);">Subcontract support · Embedded advisor · Short-term assessments · Fractional clinical-security expertise · Remote-first with on-site availability</div>
       </div>
-      <div class="lab-stats">
-        <div class="lab-stat"><div class="lab-stat-num">9</div><div class="lab-stat-label">IoMT Failure Scenarios</div></div>
-        <div class="lab-stat"><div class="lab-stat-num">30+</div><div class="lab-stat-label">Ransomware Incidents Tracked</div></div>
-        <div class="lab-stat"><div class="lab-stat-num">0</div><div class="lab-stat-label">Hypothetical Scenarios</div></div>
-        <div class="lab-stat"><div class="lab-stat-num">2</div><div class="lab-stat-label">Modes: Pro + Student</div></div>
-      </div>
+      <a href="#contact" class="btn-primary">Discuss Availability</a>
     </div>
   </div>
 </section>
@@ -992,12 +904,7 @@
     </div>
     <div class="community-strip fade-up">
       <h4>Community Roles</h4>
-      <span class="comm-tag">WiCyS Technical Mentor</span><span class="comm-tag">Lead DEF CON Badge Liaison</span><span class="comm-tag">WiSP Lead DEF CON Liaison</span><span class="comm-tag">Google Tech Equity Collective Coach</span><span class="comm-tag">People for Change Coalition Instructor</span><span class="comm-tag">Hacker Summer Camp Scholar</span><span class="comm-tag">The Diana Initiative</span><span class="comm-tag">BlackGirlsHack</span><span class="comm-tag">Semperis HIP Nashville 2026</span>
-    </div>
-    <div class="community-strip fade-up" style="margin-top:16px; background: linear-gradient(135deg, rgba(30,80,64,0.06) 0%, rgba(30,80,64,0.02) 100%); border-color: rgba(30,80,64,0.2);">
-      <h4 style="color: var(--crimson);">7 Consecutive Years — Competitive Scholarships &amp; Selected Access · 2020 through 2026</h4>
-      <p style="font-size:0.82rem; color:var(--light); line-height:1.7; width:100%; margin-bottom:12px;">Selected annually by WiCyS, The Diana Initiative, BlackGirlsHack, WISP, AWS, Women in Cloud, and Dream.org. Each scholarship opened a door. Each room changed the trajectory. In 2026, the rooms started making space for my seat — Black Hat and Semperis credentialed my access as a Featured Defender, and WISP brought me back to lead at DEF CON.</p>
-      <span class="comm-tag" style="border-color: rgba(224,168,62,0.45); color: var(--gold);">Black Hat USA 2026 · Featured Defender</span><span class="comm-tag" style="border-color: rgba(224,168,62,0.45); color: var(--gold);">WISP · Lead DEF CON Volunteer 2026</span><span class="comm-tag" style="border-color: rgba(224,168,62,0.45); color: var(--gold);">Semperis HIP Nashville 2026</span><span class="comm-tag">WiCyS 2020 + 2021</span><span class="comm-tag">Diana Initiative 2023 + 2025</span><span class="comm-tag">BlackGirlsHack/SquadCon 2023 + 2024 + 2025</span><span class="comm-tag">Black Hat/WISP 2023 + 2025</span><span class="comm-tag">DEF CON/WISP 2023 + 2024 + 2025 + 2026</span><span class="comm-tag">Hacker Summer Camp 2023 + 2024 + 2025</span><span class="comm-tag">AWS re:Invent Builder Grant 2024</span><span class="comm-tag">Women in Cloud 2024</span><span class="comm-tag">Dream.org 2023</span><span class="comm-tag">CybSafe / Coding Black Females 2022</span><span class="comm-tag">Golden Key Honor Society 2021</span>
+      <span class="comm-tag" style="border-color: rgba(224,168,62,0.45); color: var(--gold);">Black Hat USA 2026 · Featured Defender</span><span class="comm-tag">WiCyS Technical Mentor</span><span class="comm-tag">Lead DEF CON Badge Liaison</span><span class="comm-tag">WiSP Lead DEF CON Liaison</span><span class="comm-tag">Google Tech Equity Collective Coach</span><span class="comm-tag">People for Change Coalition Instructor</span><span class="comm-tag">Hacker Summer Camp Scholar</span><span class="comm-tag">The Diana Initiative</span><span class="comm-tag">BlackGirlsHack</span><span class="comm-tag">Semperis HIP Nashville 2026</span>
     </div>
   </div>
 </section>
@@ -1033,48 +940,6 @@
 
 <div class="divider"></div>
 
-<!-- ── MENTORING SECTION ── -->
-<section id="mentoring">
-  <div class="section-inner">
-    <div class="section-label">WiCyS Mentoring</div>
-    <h2 class="section-title">Third consecutive year.<br><em>Still in it with you.</em></h2>
-    <div class="mentoring-feature fade-up">
-      <div>
-        <h3>WiCyS Technical Mentor</h3>
-        <div class="mentoring-cohort">Cohort 3 · Now Active · 2026</div>
-        <p>I meet mentees where they are — the same way I triaged patients. Assess, stabilize, treat, recover. Whether you're mapping your first cert path, navigating a job search, or just need someone who's been in a field that didn't look like them: you're in the right place.</p>
-        <p style="font-size:0.82rem; color:var(--muted); margin-bottom:24px; line-height:1.7;">Three session types available: WiCyS Office Hours (Tue & Thu), 1:1 Mentor Sessions (Tue & Thu), and Saturday Study Hall — open drop-in, no booking needed.</p>
-        <a href="/wicys" class="btn-primary">Visit Mentoring Page →</a>
-      </div>
-      <div class="mentoring-sessions">
-        <a href="https://calendar.app.google/spo67aTHk6M7Ld6g7" class="mentoring-session-row" target="_blank">
-          <div class="session-row-left">
-            <h5>WiCyS Office Hours</h5>
-            <p>Tuesdays & Thursdays · 30 min · Book your slot</p>
-          </div>
-          <span class="session-row-badge badge-crimson">Book →</span>
-        </a>
-        <a href="https://calendar.app.google/S7HAL9PbuCJGh6MN8" class="mentoring-session-row" target="_blank">
-          <div class="session-row-left">
-            <h5>1:1 Mentor Session</h5>
-            <p>Tuesday & Thursday · 30 min · Open availability</p>
-          </div>
-          <span class="session-row-badge badge-crimson">Book →</span>
-        </a>
-        <a href="https://meet.google.com/jey-dwbf-hvr" class="mentoring-session-row" target="_blank">
-          <div class="session-row-left">
-            <h5>Saturday Study Hall</h5>
-            <p>Every Saturday · 1:00–2:00 PM EST · No booking needed</p>
-          </div>
-          <span class="session-row-badge badge-gold">Join →</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -1097,7 +962,7 @@
         <div class="booking-block">
           <h4>Let's Talk</h4>
           <p>Ready to discuss subcontract availability, advisory support, or a custom engagement? Reach out directly — remote-first, available immediately.</p>
-          <p style="color:var(--gold); font-size:0.8rem; margin-bottom:20px; line-height:1.6;">HIPAA Security Risk Assessments available — 5-day delivery, $2,500 flat.</p>
+          <p style="color:var(--gold); font-size:0.8rem; margin-bottom:20px; line-height:1.6;">HIPAA Security Risk Assessments available — 5-day delivery, from $2,500.</p>
           <a href="mailto:connect@chaundacdallas.com" class="btn-primary" style="width:100%; text-align:center; display:block;">Send an Email →</a>
           <div class="optin-note">OpSec by Design · Remote-first · Available Now</div>
           <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
@@ -1165,10 +1030,10 @@
     <div class="ccd-footer-heading">Community &amp; Tools</div>
     <a href="https://chaundacdallas.com/wicys">WiCyS</a>
     <a href="https://lab.chaundacdallas.com/" target="_blank" rel="noopener">DFR Lab</a>
+    <a href="https://range.chaundacdallas.com/" target="_blank" rel="noopener">NightShift Cyber Range</a>
   </div>
   <div class="ccd-footer-bottom">
     <span>© 2026 Chaunda C. Dallas LLC</span>
-    <span>Resume removed · Service hub updated</span>
   </div>
 </footer>
 
